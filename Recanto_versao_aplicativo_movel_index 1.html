@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0b3d3b">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="Guia digital do hóspede do Recanto do Sossego, na Praia do Refúgio, em Aracaju: como chegar, check-in, Wi-Fi, comodidades, regras e checkout.">
+  <!-- Página com Wi-Fi e orientações de acesso: não indexar em buscadores. Remova a linha abaixo se quiser que o guia apareça no Google. -->
+  <meta name="robots" content="noindex, nofollow">
+  <meta property="og:title" content="Recanto do Sossego | Guia do Hóspede">
+  <meta property="og:description" content="Tudo o que você precisa para uma chegada tranquila e uma estadia especial.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <title>Recanto do Sossego | Guia do Hóspede</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230d6b67'/%3E%3Ccircle cx='44' cy='20' r='8' fill='%23e8885a'/%3E%3Cpath d='M8 38c6-5 10-5 16 0s10 5 16 0 10-5 16 0M8 50c6-5 10-5 16 0s10 5 16 0 10-5 16 0' fill='none' stroke='%23fff' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+
+  <style>
+    /* =========================================================
+       DESIGN TOKENS
+    ========================================================= */
+    :root{
+      --ocean:#0d6b67; --ocean-d:#0a514f; --ocean-l:#e4f2f0; --deep:#0b3d3b; --deep2:#082b2a;
+      --sand:#f8f1e6; --sand-d:#efe3cf; --coral:#e8885a; --coral-d:#c4612f;
+      --ink:#173133; --muted:#566b6c; --white:#fff; --line:#dce7e5; --bg:#f4faf9;
+      --shadow:0 14px 38px rgba(19,71,70,.12); --shadow-s:0 6px 18px rgba(19,71,70,.07);
+      --radius:20px; --sbw:300px;
+      --serif:Georgia,"Times New Roman",serif;
+      --sans:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+    body{margin:0;font-family:var(--sans);color:var(--ink);background:var(--bg);line-height:1.62;overflow-x:hidden}
+    body.lock{overflow:hidden}
+    a{color:inherit} button{font:inherit;color:inherit}
+    html{-webkit-tap-highlight-color:rgba(13,107,103,.18)}
+    a,button,summary,label{touch-action:manipulation}
+    .btn:active,.copy:active,.quick a:active,.menu-btn:active,.float-wa:active,.to-top:active{transform:scale(.96)}
+    .checklist label{position:relative}
+    img,svg{max-width:100%}
+    :focus-visible{outline:3px solid var(--coral);outline-offset:2px;border-radius:6px}
+    .ic{width:1.15em;height:1.15em;flex:none;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;vertical-align:-.18em}
+    .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .skip{position:fixed;left:12px;top:-60px;z-index:200;background:var(--coral);color:#3b1a0a;font-weight:800;padding:10px 16px;border-radius:10px;text-decoration:none;transition:top .2s}
+    .skip:focus{top:12px}
+
+    /* =========================================================
+       BARRA DE PROGRESSO
+    ========================================================= */
+    .progress{position:fixed;left:0;top:0;height:4px;width:0;z-index:120;background:linear-gradient(90deg,var(--coral),#f6b88f)}
+
+    /* =========================================================
+       MENU LATERAL (esquerda, em lista)
+    ========================================================= */
+    .sidebar{position:fixed;inset:0 auto 0 0;width:var(--sbw);z-index:90;display:flex;flex-direction:column;
+      background:linear-gradient(180deg,var(--deep) 0%,var(--deep2) 100%);color:#d7ebe9;border-right:1px solid rgba(255,255,255,.06)}
+    .sb-brand{display:flex;align-items:center;gap:13px;padding:22px 22px 18px;border-bottom:1px solid rgba(255,255,255,.08)}
+    .logo{width:46px;height:46px;border-radius:14px;background:linear-gradient(135deg,var(--coral),#f4ad82);display:grid;place-items:center;color:#fff;font-size:1.45rem;box-shadow:0 6px 16px rgba(0,0,0,.25)}
+    .sb-brand strong{display:block;font-family:var(--serif);font-size:1.18rem;line-height:1.1;color:#fff}
+    .sb-brand small{display:block;font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:#8dc4be;margin-top:3px;font-weight:700}
+    .sb-nav{flex:1;overflow-y:auto;padding:4px 14px 14px;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.2) transparent;overscroll-behavior:contain}
+    .nav-title{font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:#7fb5b0;padding:13px 12px 5px;font-weight:800;margin:0}
+    .nav-list{list-style:none;margin:0;padding:0}
+    .nav-link{position:relative;display:flex;align-items:center;gap:11px;padding:8px 12px;border-radius:11px;text-decoration:none;color:#d7ebe9;font-weight:650;font-size:.94rem;transition:background .18s,color .18s}
+    .nav-link .ic{font-size:1.05rem;color:#8dc4be;transition:color .18s}
+    .nav-link:hover{background:rgba(255,255,255,.07);color:#fff}
+    .nav-link.active{background:rgba(255,255,255,.12);color:#fff}
+    .nav-link.active .ic{color:var(--coral)}
+    .nav-link.active:before{content:"";position:absolute;left:-14px;top:8px;bottom:8px;width:4px;border-radius:0 4px 4px 0;background:var(--coral)}
+    .sub-list{list-style:none;margin:2px 0 6px 23px;padding:0 0 0 12px;border-left:1px solid rgba(255,255,255,.14)}
+    .sub-link{display:block;padding:4px 10px;font-size:.85rem;color:#a4ccc8;text-decoration:none;border-radius:8px;transition:background .18s,color .18s}
+    .sub-link:hover{color:#fff;background:rgba(255,255,255,.07)}
+    .sub-link.active{color:#fff;background:rgba(232,136,90,.22)}
+    .sb-foot{padding:14px 18px 18px;border-top:1px solid rgba(255,255,255,.08)}
+    .sb-foot p{margin:0 0 10px;font-size:.8rem;color:#8dc4be}
+
+    .topbar{display:none;position:fixed;top:0;left:0;right:0;height:60px;z-index:85;align-items:center;justify-content:space-between;padding:0 max(14px,env(safe-area-inset-right)) 0 max(14px,env(safe-area-inset-left));
+      background:rgba(11,61,59,.96);backdrop-filter:blur(10px);color:#fff;box-shadow:0 4px 18px rgba(0,0,0,.18)}
+    .topbar .tb-brand{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-weight:700;font-size:1.08rem;text-decoration:none}
+    .topbar .logo{width:36px;height:36px;border-radius:11px;font-size:1.15rem}
+    .menu-btn{display:inline-flex;align-items:center;gap:8px;min-height:44px;min-width:44px;flex:none;border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.08);color:#fff;border-radius:12px;padding:9px 13px;font-weight:750;cursor:pointer}
+    .overlay{position:fixed;inset:0;background:rgba(5,25,24,.55);backdrop-filter:blur(2px);opacity:0;pointer-events:none;transition:opacity .25s;z-index:88}
+    .overlay.on{opacity:1;pointer-events:auto}
+    .close-btn{display:none;flex:none;margin-left:auto;border:0;background:rgba(255,255,255,.1);color:#fff;border-radius:10px;width:38px;height:38px;cursor:pointer;place-items:center;font-size:1.1rem}
+
+    /* =========================================================
+       ESTRUTURA DA PÁGINA
+    ========================================================= */
+    .page{margin-left:var(--sbw)}
+    .wrap{width:min(1020px,calc(100% - 48px));margin:0 auto}
+
+    /* HERO */
+    .hero{position:relative;overflow:hidden;color:#fff;min-height:640px;display:flex;align-items:flex-end;
+      background:radial-gradient(circle at 82% 18%,#2db1a6 0,transparent 34%),linear-gradient(150deg,#0a514f 0%,#0d6b67 45%,#178e86 100%)}
+    .hero:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 8% 92%,rgba(232,136,90,.38),transparent 28%)}
+    .sun{position:absolute;right:11%;top:15%;width:170px;height:170px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#ffd9b8,var(--coral) 70%);box-shadow:0 0 0 22px rgba(232,136,90,.14),0 0 0 54px rgba(232,136,90,.08);opacity:.95}
+    .waves{position:absolute;left:0;bottom:-1px;width:200%;max-width:none;height:128px;pointer-events:none;animation:drift 22s linear infinite;will-change:transform}
+    .w2{animation-duration:30s;animation-direction:reverse}
+    .w3{animation-duration:40s}
+    @keyframes drift{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    .hero.paused .waves{animation-play-state:paused}
+    .hero-inner{position:relative;z-index:2;padding:96px 0 150px}
+    .eyebrow{display:inline-flex;gap:9px;align-items:center;padding:8px 14px;border:1px solid rgba(255,255,255,.35);border-radius:999px;background:rgba(255,255,255,.12);backdrop-filter:blur(8px);font-weight:750;font-size:.86rem;letter-spacing:.02em}
+    h1{font-family:var(--serif);font-size:clamp(2.8rem,7.2vw,5.6rem);line-height:.96;margin:22px 0 18px;max-width:780px;letter-spacing:-.04em;text-wrap:balance}
+    .lead{font-size:clamp(1.05rem,2vw,1.25rem);max-width:640px;color:#eafaf8;margin:0 0 26px}
+    .hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:26px}
+    .hero-facts{display:flex;flex-wrap:wrap;gap:10px;padding:0;margin:0;list-style:none}
+    .pill{display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border-radius:999px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.26);font-weight:650;font-size:.9rem}
+
+    /* ACESSO RÁPIDO */
+    .quick{position:relative;z-index:5;margin-top:-62px;background:#fff;border-radius:24px;padding:12px;box-shadow:var(--shadow);display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+    .quick a{display:flex;flex-direction:column;align-items:center;gap:8px;text-decoration:none;padding:18px 10px;border-radius:16px;text-align:center;font-weight:800;background:#f3f9f8;transition:transform .2s,background .2s,box-shadow .2s}
+    .quick a .ic{font-size:1.6rem;color:var(--ocean)}
+    .quick a:hover{background:var(--ocean-l);transform:translateY(-3px);box-shadow:var(--shadow-s)}
+
+    /* SEÇÕES */
+    main{padding-bottom:80px}
+    section{scroll-margin-top:28px;margin:72px 0}
+    .section-head{margin-bottom:26px;display:grid;grid-template-columns:auto 1fr;column-gap:16px;align-items:start}
+    .sec-ico{grid-row:span 3;width:52px;height:52px;border-radius:16px;display:grid;place-items:center;font-size:1.5rem;color:#fff;background:linear-gradient(135deg,var(--ocean),#1a9a91);box-shadow:0 8px 18px rgba(13,107,103,.28)}
+    .kicker{font-size:.78rem;text-transform:uppercase;letter-spacing:.15em;color:var(--ocean);font-weight:850}
+    .section-head h2{font-family:var(--serif);font-size:clamp(1.9rem,4.4vw,2.8rem);line-height:1.08;margin:2px 0 8px;letter-spacing:-.025em}
+    .section-head p{grid-column:2;color:var(--muted);max-width:720px;margin:0}
+
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px;box-shadow:var(--shadow-s);transition:transform .22s,box-shadow .22s}
+    .card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+    .card h3{margin:14px 0 6px;font-size:1.12rem}
+    .card p{margin:0;color:var(--muted)}
+    .ico-box{width:50px;height:50px;border-radius:15px;display:grid;place-items:center;font-size:1.45rem;background:var(--ocean-l);color:var(--ocean)}
+    .ico-box.coral{background:#fdeee5;color:var(--coral-d)}
+
+    /* HORÁRIOS */
+    .time-card{text-align:center;padding:28px 18px;position:relative;overflow:hidden}
+    .time-card .ico-box{margin:0 auto}
+    .time-card h3{margin:12px 0 2px;font-size:.88rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted)}
+    .time-card .big{font-family:var(--serif);font-size:clamp(2.2rem,5vw,3rem);font-weight:700;color:var(--ocean);line-height:1.1}
+    .time-card small{display:block;color:var(--muted);margin-top:4px}
+
+    /* PAINÉIS / PASSOS */
+    .feature{display:grid;grid-template-columns:1.15fr .85fr;gap:22px;align-items:start}
+    .panel{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:30px;box-shadow:var(--shadow)}
+    .panel h3{margin:0 0 18px;font-size:1.2rem}
+    .steps{counter-reset:step;list-style:none;padding:0;margin:0}
+    .steps li{counter-increment:step;position:relative;padding:3px 0 22px 52px}
+    .steps li:before{content:counter(step);position:absolute;left:0;top:0;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:var(--ocean);color:#fff;font-weight:850;box-shadow:0 4px 10px rgba(13,107,103,.3)}
+    .steps li:not(:last-child):after{content:"";position:absolute;left:17px;top:40px;bottom:2px;border-left:2px dashed #bdd6d3}
+    .steps li:last-child{padding-bottom:4px}
+    .badges{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 20px}
+    .badge{display:inline-flex;align-items:center;gap:7px;background:var(--ocean-l);color:var(--ocean-d);font-weight:750;font-size:.86rem;padding:7px 12px;border-radius:999px}
+    .notice{display:flex;gap:12px;border-left:4px solid var(--coral);background:#fff8f3;padding:16px 18px;border-radius:0 14px 14px 0;color:#654a3c;margin-top:20px}
+    .notice .ic{color:var(--coral-d);font-size:1.3rem;margin-top:2px}
+    .notice strong{color:#3d2d25}
+    .placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;min-height:230px;border:2px dashed #b4cecb;background:linear-gradient(160deg,#eef7f6,#e4f2f0);border-radius:var(--radius);padding:30px 22px;text-align:center;color:#4f6a68}
+    .placeholder .ic{font-size:2rem;color:var(--ocean);margin-bottom:4px}
+    .placeholder b{display:block;color:var(--ink);font-size:1.02rem}
+    .placeholder .soon{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;font-weight:850;color:var(--coral-d);background:#fdeee5;padding:3px 10px;border-radius:999px}
+
+    /* BOTÕES */
+    .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;text-decoration:none;border-radius:14px;padding:13px 20px;font-weight:800;border:1px solid transparent;cursor:pointer;transition:transform .15s,background .2s,box-shadow .2s}
+    .btn:hover{transform:translateY(-2px)}
+    .btn-primary{background:var(--ocean);color:#fff;box-shadow:0 8px 18px rgba(13,107,103,.28)}
+    .btn-primary:hover{background:var(--ocean-d)}
+    .btn-light{background:#fff;color:var(--ocean);border-color:#bdd6d3}
+    .btn-light:hover{background:var(--ocean-l)}
+    .btn-coral{background:var(--coral);color:#3b1a0a;box-shadow:0 8px 18px rgba(232,136,90,.35)}
+    .btn-coral:hover{background:#f09a6f}
+    .btn-wa{background:#25d366;color:#06361d;box-shadow:0 8px 18px rgba(37,211,102,.3)}
+    .btn-wa:hover{background:#3be07a}
+    .btn-block{width:100%}
+
+    /* WI-FI */
+    .wifi{position:relative;overflow:hidden;background:linear-gradient(135deg,var(--ocean),#178e86);color:#fff;border-radius:26px;padding:34px;box-shadow:var(--shadow);display:grid;grid-template-columns:1fr auto;gap:26px;align-items:center}
+    .wifi:after{content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,.08)}
+    .wifi>*{position:relative;z-index:1}
+    .wifi small{color:#d9f3f0;font-weight:700;letter-spacing:.1em;text-transform:uppercase;font-size:.74rem}
+    .wifi h2{font-family:var(--serif);font-size:clamp(1.7rem,4vw,2.3rem);margin:4px 0 4px;display:flex;align-items:center;gap:12px}
+    .credentials{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
+    .credential{padding:13px 16px;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.28);border-radius:14px;min-width:190px}
+    .credential b{display:block;font-size:1.12rem;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;word-break:break-all}
+    .wifi-actions{display:flex;flex-direction:column;gap:10px}
+    .copy{border:0;border-radius:14px;padding:13px 20px;background:#fff;color:var(--ocean);font-weight:850;cursor:pointer;display:inline-flex;gap:9px;align-items:center;justify-content:center;transition:background .2s,transform .15s}
+    .copy:hover{background:var(--sand);transform:translateY(-2px)}
+    .copy.ghost{background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.35)}
+    .copy.ghost:hover{background:rgba(255,255,255,.24)}
+
+    /* COMODIDADES */
+    .amen-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:12px;margin-bottom:22px}
+    .amenity{display:flex;align-items:center;gap:11px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:13px 14px;font-weight:700;font-size:.94rem;transition:border-color .2s,transform .2s}
+    .amenity:hover{border-color:var(--ocean);transform:translateY(-2px)}
+    .amenity .ic{font-size:1.35rem;color:var(--ocean)}
+
+    /* ACORDEÕES */
+    details{background:#fff;border:1px solid var(--line);border-radius:16px;margin:10px 0;overflow:hidden;scroll-margin-top:28px;transition:box-shadow .2s,border-color .2s}
+    details[open]{border-color:#b9d8d4;box-shadow:var(--shadow-s)}
+    summary{cursor:pointer;padding:17px 20px;font-weight:800;list-style:none;display:flex;align-items:center;gap:12px}
+    summary::-webkit-details-marker{display:none}
+    summary .s-ico{width:36px;height:36px;border-radius:11px;background:var(--ocean-l);color:var(--ocean);display:grid;place-items:center;font-size:1.1rem}
+    summary .chev{margin-left:auto;color:var(--ocean);transition:transform .25s}
+    details[open] summary .chev{transform:rotate(180deg)}
+    summary:hover{background:#f7fbfa}
+    .details-body{padding:2px 22px 22px 68px;color:var(--muted)}
+    .details-body ul{margin:0;padding:0;list-style:none;display:grid;gap:9px}
+    .details-body li{position:relative;padding-left:28px}
+    .details-body li:before{content:"";position:absolute;left:0;top:.35em;width:18px;height:18px;border-radius:50%;background:var(--ocean-l) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230d6b67' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") center/11px no-repeat}
+    .details-body.cols ul{grid-template-columns:repeat(2,1fr);column-gap:22px}
+    .details-body p{margin:0}
+
+    /* REGRAS */
+    .rule-chips{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:18px}
+    .rule-chip{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px 10px;text-align:center;font-weight:750;font-size:.9rem;line-height:1.3}
+    .rule-chip .ic{display:block;margin:0 auto 8px;font-size:1.6rem;color:var(--coral-d)}
+
+    /* CHECKLIST CHECKOUT */
+    .check-top{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:12px;flex-wrap:wrap}
+    .check-top h3{margin:0}
+    .check-count{font-weight:800;color:var(--ocean);font-size:.92rem}
+    .bar{height:8px;border-radius:999px;background:var(--ocean-l);overflow:hidden;margin-bottom:18px}
+    .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--ocean),#2db1a6);border-radius:999px;transition:width .35s}
+    .checklist{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+    .checklist label{display:flex;gap:14px;align-items:flex-start;padding:14px 16px;border:1px solid var(--line);border-radius:14px;cursor:pointer;transition:background .2s,border-color .2s}
+    .checklist label:hover{background:#f7fbfa}
+    .checklist input{position:absolute;opacity:0;pointer-events:none}
+    .checklist .box{flex:none;width:26px;height:26px;border-radius:8px;border:2px solid #aac8c5;display:grid;place-items:center;color:transparent;background:#fff;transition:all .2s;margin-top:1px}
+    .checklist .box .ic{width:15px;height:15px;stroke-width:3.4}
+    .checklist input:checked+.box{background:var(--ocean);border-color:var(--ocean);color:#fff}
+    .checklist input:checked~.txt{color:var(--muted)}
+    .checklist input:checked~.txt strong{text-decoration:line-through;text-decoration-color:rgba(23,49,51,.4)}
+    .checklist input:focus-visible+.box{outline:3px solid var(--coral);outline-offset:2px}
+    .checklist li.done label{background:#f1f9f8;border-color:#b9d8d4}
+    .checklist .txt{color:var(--muted)}
+    .checklist .txt strong{color:var(--ink);display:block}
+
+    /* DICAS */
+    .tip{text-align:left}
+    .tip .soon{display:inline-block;margin-top:12px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;font-weight:850;color:var(--coral-d);background:#fdeee5;padding:3px 10px;border-radius:999px}
+
+    /* CONTATO */
+    .contact{position:relative;overflow:hidden;text-align:center;background:linear-gradient(160deg,var(--sand),#fbf6ed);border:1px solid var(--sand-d);border-radius:28px;padding:48px 26px;box-shadow:var(--shadow)}
+    .contact h2{font-family:var(--serif);font-size:clamp(1.9rem,4.6vw,2.7rem);margin:8px 0;letter-spacing:-.02em}
+    .contact p{color:var(--muted);max-width:620px;margin:0 auto}
+    .contact .phone{margin-top:16px;font-weight:800;color:var(--ocean-d);font-size:1.1rem}
+    .contact .cta-row{justify-content:center}
+
+    /* RODAPÉ */
+    footer{background:var(--deep);color:#cfe5e3;padding:48px 24px calc(40px + env(safe-area-inset-bottom));text-align:center}
+    .footer-title{font-family:var(--serif);color:#fff;font-size:1.8rem;margin-bottom:6px}
+    footer p{max-width:560px;margin:14px auto 0}
+    .foot-links{display:flex;justify-content:center;flex-wrap:wrap;gap:8px 22px;margin-top:20px;padding:0;list-style:none}
+    .foot-links a{color:#9fd0ca;text-decoration:none;font-weight:700;font-size:.9rem}
+    .foot-links a:hover{color:#fff;text-decoration:underline}
+
+    /* FLUTUANTES */
+    .float-wa{position:fixed;right:20px;bottom:20px;z-index:70;display:inline-flex;align-items:center;gap:9px;background:#25d366;color:#06361d;text-decoration:none;font-weight:900;border-radius:999px;padding:14px 20px;box-shadow:0 10px 28px rgba(0,0,0,.22);transition:transform .2s}
+    .float-wa:hover{transform:translateY(-3px) scale(1.03)}
+    .to-top{position:fixed;right:24px;bottom:84px;z-index:70;width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:#fff;color:var(--ocean);display:grid;place-items:center;font-size:1.2rem;cursor:pointer;box-shadow:var(--shadow-s);opacity:0;transform:translateY(10px);pointer-events:none;transition:opacity .25s,transform .25s}
+    .to-top.on{opacity:1;transform:none;pointer-events:auto}
+    .toast{position:fixed;left:50%;bottom:96px;text-align:center;transform:translate(-50%,20px);opacity:0;background:var(--ink);color:#fff;padding:12px 18px;border-radius:999px;transition:.25s;z-index:130;font-weight:700;display:flex;gap:8px;align-items:center;pointer-events:none}
+    .toast.on{opacity:1;transform:translate(-50%,0)}
+
+    /* ANIMAÇÃO DE ENTRADA */
+    .js .reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+    .js .reveal.in{opacity:1;transform:none}
+
+    /* =========================================================
+       RESPONSIVO
+    ========================================================= */
+    @media(hover:none){
+      .card:hover,.quick a:hover,.amenity:hover,.btn:hover,.copy:hover,.float-wa:hover{transform:none}
+    }
+    @media(pointer:coarse){
+      .nav-link{padding-top:12px;padding-bottom:12px}
+      .sub-link{padding:11px 10px}
+      .close-btn{width:44px;height:44px}
+      .tb-brand{min-height:44px}
+      .foot-links a{display:inline-block;padding:13px 6px}
+      .sb-home{min-height:44px}
+      summary{min-height:56px}
+      .btn,.copy{min-height:48px}
+    }
+    @media(max-width:1180px){
+      .rule-chips{grid-template-columns:repeat(3,1fr)}
+    }
+    @media(max-width:980px){
+      .topbar{display:flex}
+      .close-btn{display:grid}
+      .page{margin-left:0;padding-top:60px}
+      .sidebar{width:min(320px,86vw);transform:translateX(-102%);visibility:hidden;transition:transform .3s ease,visibility 0s linear .3s;box-shadow:12px 0 40px rgba(0,0,0,.35)}
+      .sidebar.open{transform:none;visibility:visible;transition:transform .3s ease}
+      .sb-brand{padding-right:14px}
+      section,details{scroll-margin-top:78px}
+      .sun{right:6%;top:9%;width:120px;height:120px}
+      .hero{min-height:600px}
+      .hero-inner{padding:64px 0 140px}
+    }
+    @media(max-width:780px){
+      .wrap{width:calc(100% - 32px)}
+      .quick{grid-template-columns:repeat(2,1fr)}
+      .grid{grid-template-columns:1fr}
+      .feature{grid-template-columns:1fr}
+      .wifi{grid-template-columns:1fr;padding:26px 22px}
+      .wifi-actions{flex-direction:row}.wifi-actions .copy{flex:1}
+      .credential{flex:1 1 100%}
+      .rule-chips{grid-template-columns:repeat(2,1fr)}
+      .details-body{padding:2px 20px 20px}
+      .details-body.cols ul{grid-template-columns:1fr}
+      .panel,.card{padding:22px}
+      .pill{font-size:.82rem}
+    }
+    @media(max-width:780px){
+      body{font-size:16px}
+      /* HERO compacto: atalhos aparecem na 1ª tela */
+      .hero{min-height:0}
+      .hero-inner{padding:30px 0 112px}
+      .sun{width:84px;height:84px;right:-14px;top:18px;opacity:.55;box-shadow:0 0 0 14px rgba(232,136,90,.10),0 0 0 32px rgba(232,136,90,.06)}
+      h1{font-size:clamp(2.5rem,13vw,3.3rem);margin:16px 0 12px}
+      .lead{font-size:1rem;line-height:1.55;margin-bottom:18px}
+      .hero-cta{flex-wrap:nowrap;gap:10px;margin-bottom:16px}
+      .hero-cta .btn{flex:1 1 0;padding:13px 8px;font-size:.95rem;gap:7px}
+      .hero-facts{flex-wrap:nowrap;overflow-x:auto;margin:0 -16px;padding:2px 16px 6px;scroll-snap-type:x proximity;scroll-padding-left:16px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+      .hero-facts::-webkit-scrollbar{display:none}
+      .pill{flex:none;scroll-snap-align:start;white-space:nowrap}
+      .quick{margin-top:-86px;padding:10px;gap:8px;border-radius:22px}
+      .quick a{padding:16px 8px;min-height:84px;justify-content:center}
+      /* seções mais curtas */
+      section{margin:44px 0}
+      .section-head{grid-template-columns:auto 1fr;column-gap:12px;margin-bottom:18px}
+      .sec-ico{width:44px;height:44px;border-radius:14px;grid-row:span 2;margin:0;font-size:1.3rem}
+      .section-head p{grid-column:1/-1;margin-top:10px}
+      .section-head h2{font-size:1.75rem;margin-bottom:0}
+      .rule-chip:last-child{grid-column:1/-1}
+      .time-card{display:grid;grid-template-columns:auto 1fr;column-gap:16px;text-align:left;align-items:center;padding:18px 20px}
+      .time-card .ico-box{grid-row:span 3;margin:0}
+      .time-card h3{margin:0}
+      .time-card .big{font-size:2rem}
+      .cta-row .btn{flex:1 1 100%}
+      .badge{font-size:.82rem}
+      /* Wi-Fi: leitura e cópia com uma mão */
+      .credential{padding:14px 16px}
+      .credential b{font-size:1.25rem}
+      .wifi-actions .copy{min-height:52px}
+      /* WhatsApp vira botão redondo e não cobre mais o conteúdo */
+      .float-wa{left:auto;right:calc(14px + env(safe-area-inset-right));bottom:calc(14px + env(safe-area-inset-bottom));width:58px;height:58px;padding:0;justify-content:center;font-size:0;gap:0}
+      .float-wa .ic{font-size:1.6rem}
+      .to-top{right:calc(19px + env(safe-area-inset-right));bottom:calc(86px + env(safe-area-inset-bottom))}
+      .toast{bottom:calc(92px + env(safe-area-inset-bottom));max-width:calc(100% - 32px)}
+      footer{padding-bottom:calc(96px + env(safe-area-inset-bottom))}
+      .contact{padding:36px 20px}
+    }
+    @media(max-width:360px){
+      .hero-cta .btn .ic{display:none}.hero-cta .btn{font-size:.92rem}
+      .lead{font-size:.95rem;line-height:1.5}
+      .hero-inner{padding-top:22px}
+      .quick a{font-size:.9rem}
+    }
+    @media(max-width:980px) and (orientation:landscape) and (max-height:520px){
+      .hero-inner{padding:24px 0 100px}
+      .quick{margin-top:-60px}
+    }
+    @media(max-width:420px){ .wifi-actions{flex-direction:column} }
+    @media(prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      *{transition:none!important;animation:none!important}
+      .js .reveal{opacity:1;transform:none}
+    }
+    @media print{
+      .sidebar,.topbar,.overlay,.float-wa,.to-top,.toast,.progress,.quick,.hero-cta,.waves,.sun{display:none!important}
+      .page{margin:0;padding:0}
+      .hero{min-height:0;background:#0d6b67!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+      .hero-inner{padding:30px 0}
+      .js .reveal{opacity:1;transform:none}
+      section{margin:28px 0;break-inside:avoid-page}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ÍCONES (sprite SVG) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="i-wave" viewBox="0 0 24 24"><path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/></symbol>
+      <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+      <symbol id="i-key" viewBox="0 0 24 24"><circle cx="7.5" cy="15.5" r="5.5"/><path d="m21 2-9.6 9.6"/><path d="m15.5 7.5 3 3L22 7l-3-3"/></symbol>
+      <symbol id="i-wifi" viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></symbol>
+      <symbol id="i-home" viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></symbol>
+      <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></symbol>
+      <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></symbol>
+      <symbol id="i-moon" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></symbol>
+      <symbol id="i-login" viewBox="0 0 24 24"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></symbol>
+      <symbol id="i-logout" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></symbol>
+      <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></symbol>
+      <symbol id="i-users" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+      <symbol id="i-bed" viewBox="0 0 24 24"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></symbol>
+      <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></symbol>
+      <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></symbol>
+      <symbol id="i-menu" viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></symbol>
+      <symbol id="i-x" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></symbol>
+      <symbol id="i-up" viewBox="0 0 24 24"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></symbol>
+      <symbol id="i-chev" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></symbol>
+      <symbol id="i-map" viewBox="0 0 24 24"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></symbol>
+      <symbol id="i-nav" viewBox="0 0 24 24"><polygon points="3 11 22 2 13 21 11 13 3 11"/></symbol>
+      <symbol id="i-video" viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></symbol>
+      <symbol id="i-utensils" viewBox="0 0 24 24"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></symbol>
+      <symbol id="i-flame" viewBox="0 0 24 24"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.07-2.14-.22-4.05 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.15.43-2.29 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></symbol>
+      <symbol id="i-snow" viewBox="0 0 24 24"><line x1="2" y1="12" x2="22" y2="12"/><line x1="12" y1="2" x2="12" y2="22"/><path d="m20 16-4-4 4-4"/><path d="m4 8 4 4-4 4"/><path d="m16 4-4 4-4-4"/><path d="m8 20 4-4 4 4"/></symbol>
+      <symbol id="i-tv" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="15" rx="2"/><polyline points="17 2 12 7 7 2"/></symbol>
+      <symbol id="i-car" viewBox="0 0 24 24"><path d="M5 17H3v-5l2-5h14l2 5v5h-2"/><path d="M3 12h18"/><circle cx="7.5" cy="17" r="2"/><circle cx="16.5" cy="17" r="2"/><path d="M9.5 17h5"/></symbol>
+      <symbol id="i-drop" viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></symbol>
+      <symbol id="i-wash" viewBox="0 0 24 24"><rect x="3" y="2" width="18" height="20" rx="2"/><circle cx="12" cy="14" r="5"/><line x1="7" y1="6" x2="7.01" y2="6"/><line x1="11" y1="6" x2="11.01" y2="6"/></symbol>
+      <symbol id="i-wine" viewBox="0 0 24 24"><path d="M8 22h8"/><path d="M12 15v7"/><path d="M12 15a5 5 0 0 0 5-5c0-2-.5-4-2-8H9c-1.5 4-2 6-2 8a5 5 0 0 0 5 5z"/></symbol>
+      <symbol id="i-box" viewBox="0 0 24 24"><path d="M21 8v13H3V8"/><path d="M1 3h22v5H1z"/><path d="M10 12h4"/></symbol>
+      <symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></symbol>
+      <symbol id="i-cart" viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 1.95-1.56L23 6H6"/></symbol>
+      <symbol id="i-trash" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></symbol>
+      <symbol id="i-power" viewBox="0 0 24 24"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"/><line x1="12" y1="2" x2="12" y2="12"/></symbol>
+      <symbol id="i-bag" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></symbol>
+      <symbol id="i-book" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></symbol>
+      <symbol id="i-list" viewBox="0 0 24 24"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/><polyline points="9 14 11 16 15 12"/></symbol>
+      <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></symbol>
+      <symbol id="i-lock" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+      <symbol id="i-smoke" viewBox="0 0 24 24"><line x1="2" y1="2" x2="22" y2="22"/><path d="M2 16h12v4H2z"/><path d="M18 16h2v4h-2z"/><path d="M22 14v-1a3 3 0 0 0-3-3"/></symbol>
+      <symbol id="i-paw" viewBox="0 0 24 24"><circle cx="5" cy="11" r="1.8"/><circle cx="9" cy="6" r="1.8"/><circle cx="15" cy="6" r="1.8"/><circle cx="19" cy="11" r="1.8"/><path d="M12 12c-3 0-5 3-5 5.2 0 1.6 1.4 2.3 2.6 2.3 1 0 1.6-.5 2.4-.5s1.4.5 2.4.5c1.2 0 2.6-.7 2.6-2.3C17 15 15 12 12 12z"/></symbol>
+      <symbol id="i-party" viewBox="0 0 24 24"><path d="M4 20 8 8l8 8z"/><path d="M14 4v2M20 10h-2M18 4l-1.5 1.5M20 16l-2-1"/></symbol>
+      <symbol id="i-play" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></symbol>
+      <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+      <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M9 18h6M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.3h6c0-1 .4-1.8 1-2.3A7 7 0 0 0 12 2z"/></symbol>
+    </defs>
+  </svg>
+
+  <a class="skip" href="#conteudo">Pular para o conteúdo</a>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+
+  <!-- BARRA SUPERIOR (apenas celular/tablet) -->
+  <div class="topbar">
+    <a class="tb-brand" href="#inicio"><span class="logo"><svg class="ic" aria-hidden="true"><use href="#i-wave"/></svg></span>Recanto do Sossego</a>
+    <button class="menu-btn" id="menuBtn" type="button" aria-controls="sidebar" aria-expanded="false"><svg class="ic" aria-hidden="true"><use href="#i-menu"/></svg>Menu</button>
+  </div>
+  <div class="overlay" id="overlay"></div>
+
+  <!-- MENU LATERAL -->
+  <aside class="sidebar" id="sidebar" aria-label="Menu do guia">
+    <div class="sb-brand">
+      <a class="sb-home" href="#inicio" style="display:flex;align-items:center;gap:13px;text-decoration:none;color:inherit">
+        <span class="logo"><svg class="ic" aria-hidden="true"><use href="#i-wave"/></svg></span>
+        <span><strong>Recanto do Sossego</strong><small>Guia do hóspede</small></span>
+      </a>
+      <button class="close-btn" id="closeBtn" type="button" aria-label="Fechar menu"><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg></button>
+    </div>
+
+    <nav class="sb-nav" id="sbNav" aria-label="Seções do guia">
+      <p class="nav-title">Início</p>
+      <ul class="nav-list">
+        <li><a class="nav-link" data-sec="boas-vindas" href="#boas-vindas"><svg class="ic" aria-hidden="true"><use href="#i-home"/></svg>Boas-vindas</a></li>
+        <li><a class="nav-link" data-sec="horarios" href="#horarios"><svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg>Horários</a></li>
+      </ul>
+
+      <p class="nav-title">Chegada</p>
+      <ul class="nav-list">
+        <li><a class="nav-link" data-sec="chegar" href="#chegar"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg>Como chegar</a></li>
+        <li><a class="nav-link" data-sec="checkin" href="#checkin"><svg class="ic" aria-hidden="true"><use href="#i-key"/></svg>Check-in</a></li>
+        <li><a class="nav-link" data-sec="wifi" href="#wifi"><svg class="ic" aria-hidden="true"><use href="#i-wifi"/></svg>Wi-Fi</a></li>
+      </ul>
+
+      <p class="nav-title">Sua estadia</p>
+      <ul class="nav-list">
+        <li>
+          <a class="nav-link" data-sec="casa" href="#casa"><svg class="ic" aria-hidden="true"><use href="#i-bed"/></svg>Comodidades</a>
+          <ul class="sub-list">
+            <li><a class="sub-link" href="#casa-cozinha">Cozinha e refeições</a></li>
+            <li><a class="sub-link" href="#casa-quartos">Quartos e banho</a></li>
+            <li><a class="sub-link" href="#casa-externa">Área externa e lazer</a></li>
+          </ul>
+        </li>
+        <li>
+          <a class="nav-link" data-sec="regras" href="#regras"><svg class="ic" aria-hidden="true"><use href="#i-list"/></svg>Regras da casa</a>
+          <ul class="sub-list">
+            <li><a class="sub-link" href="#regras-convivencia">Convivência e segurança</a></li>
+            <li><a class="sub-link" href="#regras-cuidados">Cuidados com a casa</a></li>
+            <li><a class="sub-link" href="#regras-comuns">Áreas comuns</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <p class="nav-title">Despedida e região</p>
+      <ul class="nav-list">
+        <li><a class="nav-link" data-sec="checkout" href="#checkout"><svg class="ic" aria-hidden="true"><use href="#i-logout"/></svg>Checkout</a></li>
+        <li><a class="nav-link" data-sec="dicas" href="#dicas"><svg class="ic" aria-hidden="true"><use href="#i-compass"/></svg>Dicas da região</a></li>
+        <li><a class="nav-link" data-sec="contato" href="#contato"><svg class="ic" aria-hidden="true"><use href="#i-chat"/></svg>Contato</a></li>
+      </ul>
+    </nav>
+
+    <div class="sb-foot">
+      <p>Precisa de ajuda durante a estadia?</p>
+      <a class="btn btn-wa btn-block" href="https://wa.me/5534999792398?text=Ol%C3%A1!%20Estou%20hospedado(a)%20no%20Recanto%20do%20Sossego%20e%20preciso%20de%20ajuda." target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-chat"/></svg>Falar no WhatsApp</a>
+    </div>
+  </aside>
+
+  <div class="page">
+
+    <!-- HERO -->
+    <header class="hero" id="inicio">
+      <span class="sun" aria-hidden="true"></span>
+      <svg class="waves w1" viewBox="0 0 2880 200" preserveAspectRatio="none" aria-hidden="true" style="height:150px"><path fill="rgba(255,255,255,.10)" d="M0,90 q180,-70 360,0 t360,0 t360,0 t360,0 t360,0 t360,0 t360,0 t360,0 V200 H0Z"/></svg>
+      <svg class="waves w2" viewBox="0 0 2880 200" preserveAspectRatio="none" aria-hidden="true" style="height:118px"><path fill="rgba(255,255,255,.16)" d="M0,100 q180,60 360,0 t360,0 t360,0 t360,0 t360,0 t360,0 t360,0 t360,0 V200 H0Z"/></svg>
+      <svg class="waves w3" viewBox="0 0 2880 200" preserveAspectRatio="none" aria-hidden="true" style="height:84px"><path fill="#f4faf9" d="M0,100 q180,-60 360,0 t360,0 t360,0 t360,0 t360,0 t360,0 t360,0 t360,0 V200 H0Z"/></svg>
+
+      <div class="wrap hero-inner">
+        <span class="eyebrow"><svg class="ic" aria-hidden="true"><use href="#i-book"/></svg>Guia digital do hóspede</span>
+        <h1>Recanto do Sossego</h1>
+        <p class="lead">Seja muito bem-vindo ao Recanto do Sossego! Preparamos este guia com carinho para facilitar sua chegada e ajudar você a aproveitar cada momento da estadia, com conforto, tranquilidade e praticidade à beira-mar.</p>
+        <div class="hero-cta">
+          <a class="btn btn-coral" href="#chegar"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg>Como chegar</a>
+          <a class="btn btn-light" href="#checkin"><svg class="ic" aria-hidden="true"><use href="#i-key"/></svg>Fazer o check-in</a>
+        </div>
+        <ul class="hero-facts">
+          <li class="pill"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg>Praia do Refúgio, Mosqueiro, Aracaju</li>
+          <li class="pill"><svg class="ic" aria-hidden="true"><use href="#i-users"/></svg>Até 8 hóspedes</li>
+          <li class="pill"><svg class="ic" aria-hidden="true"><use href="#i-bed"/></svg>3 quartos</li>
+          <li class="pill"><svg class="ic" aria-hidden="true"><use href="#i-shield"/></svg>Portaria 24 horas</li>
+        </ul>
+      </div>
+    </header>
+
+    <div class="wrap">
+      <nav class="quick" aria-label="Acessos rápidos">
+        <a href="#chegar"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg>Como chegar</a>
+        <a href="#checkin"><svg class="ic" aria-hidden="true"><use href="#i-key"/></svg>Check-in</a>
+        <a href="#wifi"><svg class="ic" aria-hidden="true"><use href="#i-wifi"/></svg>Wi-Fi</a>
+        <a href="#regras"><svg class="ic" aria-hidden="true"><use href="#i-list"/></svg>Regras</a>
+      </nav>
+    </div>
+
+    <main class="wrap" id="conteudo" tabindex="-1">
+
+      <!-- BOAS-VINDAS -->
+      <section id="boas-vindas" class="reveal">
+        <div class="section-head">
+          <span class="sec-ico"><svg class="ic" aria-hidden="true"><use href="#i-home"/></svg></span>
+          <span class="kicker">Boas-vindas</span>
+          <h2>Sinta-se em casa</h2>
+          <p>O Recanto do Sossego fica em condomínio fechado, de frente para o mar, na tranquila Praia do Refúgio. Cada ambiente foi preparado para que você e sua família descansem com conforto, sintam-se à vontade e criem boas lembranças juntos.</p>
+        </div>
+        <div class="grid">
+          <article class="card"><span class="ico-box"><svg class="ic" aria-hidden="true"><use href="#i-wave"/></svg></span><h3>Pertinho do mar</h3><p>Aproveite a facilidade de estar pertinho da praia e próximo ao Dunna Beach.</p></article>
+          <article class="card"><span class="ico-box coral"><svg class="ic" aria-hidden="true"><use href="#i-users"/></svg></span><h3>Lazer para a família</h3><p>As áreas comuns oferecem opções para adultos e crianças aproveitarem juntos: piscinas, playground e quadra de futebol.</p></article>
+          <article class="card"><span class="ico-box"><svg class="ic" aria-hidden="true"><use href="#i-shield"/></svg></span><h3>Tranquilidade</h3><p>Conte com a tranquilidade de um condomínio fechado, com acesso monitorado e portaria 24 horas.</p></article>
+        </div>
+      </section>
+
+      <!-- HORÁRIOS -->
+      <section id="horarios" class="reveal">
+        <div class="section-head">
+          <span class="sec-ico"><svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg></span>
+          <span class="kicker">Informações essenciais</span>
+          <h2>Horários da estadia</h2>
+        </div>
+        <div class="grid">
+          <article class="card time-card"><span class="ico-box"><svg class="ic" aria-hidden="true"><use href="#i-sun"/></svg></span><h3>Check-in</h3><div class="big">12h</div><small>a partir das 12h</small></article>
+          <article class="card time-card"><span class="ico-box coral"><svg class="ic" aria-hidden="true"><use href="#i-bag"/></svg></span><h3>Checkout</h3><div class="big">13h</div><small>até as 13h</small></article>
+          <article class="card time-card"><span class="ico-box"><svg class="ic" aria-hidden="true"><use href="#i-moon"/></svg></span><h3>Horário de silêncio</h3><div class="big">23h – 8h</div><small>das 23h às 8h</small></article>
+        </div>
+      </section>
+
+      <!-- COMO CHEGAR -->
+      <section id="chegar" class="reveal">
+        <div class="section-head">
+          <span class="sec-ico"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg></span>
+          <span class="kicker">Localização</span>
+          <h2>Como chegar</h2>
+          <p>Para que sua chegada seja tranquila, reunimos abaixo as principais orientações. O trajeto a partir do Aeroporto Santa Maria é todo asfaltado e costuma levar de 20 a 25 minutos, dependendo do trânsito.</p>
+        </div>
+        <div class="feature">
+          <div class="panel">
+            <h3>Saindo do Aeroporto de Aracaju</h3>
+            <div class="badges">
+              <span class="badge"><svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg>20 a 25 min</span>
+              <span class="badge"><svg class="ic" aria-hidden="true"><use href="#i-car"/></svg>Trajeto asfaltado</span>
+              <span class="badge"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg>Av. Inácio Barbosa, 11.650</span>
+            </div>
+            <ol class="steps">
+              <li>Siga em direção à Avenida Inácio Barbosa, no sentido Zona Sul/Praia do Refúgio.</li>
+              <li>Continue pela Avenida Inácio Barbosa até o número <strong>11.650</strong>.</li>
+              <li>Ao chegar ao Condomínio Viva Vida, apresente-se na portaria e informe o nome do responsável pela reserva.</li>
+            </ol>
+            <div class="cta-row">
+              <a class="btn btn-primary" href="https://www.google.com/maps/search/?api=1&query=Condom%C3%ADnio%20Viva%20Vida%20Avenida%20In%C3%A1cio%20Barbosa%2011650" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-map"/></svg>Abrir no Google Maps</a>
+              <a class="btn btn-light" href="https://waze.com/ul?q=Condom%C3%ADnio%20Viva%20Vida%20Avenida%20In%C3%A1cio%20Barbosa%2011650&navigate=yes" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-nav"/></svg>Abrir no Waze</a>
+              <button class="btn btn-light" type="button" data-copy="Condomínio Viva Vida - Avenida Inácio Barbosa, 11650 - Aracaju/SE" data-msg="Endereço copiado!"><svg class="ic" aria-hidden="true"><use href="#i-copy"/></svg>Copiar endereço</button>
+            </div>
+          </div>
+          <div class="placeholder"><svg class="ic" aria-hidden="true"><use href="#i-video"/></svg><span class="soon">Em breve</span><b>Vídeo da chegada</b>Um vídeo curto da chegada poderá ser disponibilizado aqui para facilitar a identificação da entrada do condomínio e do caminho até a casa.</div>
+        </div>
+      </section>
+
+      <!-- CHECK-IN -->
+      <section id="checkin" class="reveal">
+        <div class="section-head">
+          <span class="sec-ico"><svg class="ic" aria-hidden="true"><use href="#i-key"/></svg></span>
+          <span class="kicker">Sua chegada</span>
+          <h2>Como fazer o check-in</h2>
+          <p>Queremos que você se sinta bem recebido desde o primeiro momento. Siga estas orientações com calma e, se surgir qualquer dúvida, estaremos disponíveis pelo WhatsApp.</p>
+        </div>
+        <div class="feature">
+          <div class="panel">
+            <ol class="steps">
+              <li>O check-in está disponível a partir das 12h. Ao chegar, dirija-se à portaria do Condomínio Viva Vida.</li>
+              <li>Na portaria, apresente-se e informe o nome do responsável pela reserva.</li>
+              <li>Após a liberação da entrada, siga as orientações enviadas pelo WhatsApp.</li>
+              <li>Retire a chave no local informado e siga para a casa.</li>
+              <li>Acomode-se, respire fundo e aproveite seus dias no Recanto do Sossego.</li>
+            </ol>
+            <div class="notice"><svg class="ic" aria-hidden="true"><use href="#i-lock"/></svg><div><strong>Importante:</strong> por segurança, a localização exata da chave será enviada pelo WhatsApp somente ao responsável pela reserva, próximo ao horário do check-in.</div></div>
+          </div>
+          <div class="placeholder"><svg class="ic" aria-hidden="true"><use href="#i-video"/></svg><span class="soon">Em breve</span><b>Vídeo de acesso</b>Um vídeo do percurso interno poderá ser disponibilizado aqui para facilitar sua chegada. O local da chave continuará sendo informado somente pelo WhatsApp.</div>
+        </div>
+      </section>
+
+      <!-- WI-FI -->
+      <section id="wifi" class="reveal">
+        <div class="wifi">
+          <div>
+            <small>Internet da casa</small>
+            <h2><svg class="ic" aria-hidden="true"><use href="#i-wifi"/></svg>Conecte-se ao Wi-Fi</h2>
+            <div class="credentials">
+              <div class="credential"><small>Rede</small><b id="wifi-net">brisa-3473500</b></div>
+              <div class="credential"><small>Senha</small><b id="wifi-pass">hu58t83</b></div>
+            </div>
+          </div>
+          <div class="wifi-actions">
+            <button class="copy" type="button" data-copy-id="wifi-pass" data-msg="Senha copiada!"><svg class="ic" aria-hidden="true"><use href="#i-copy"/></svg>Copiar senha</button>
+            <button class="copy ghost" type="button" data-copy-id="wifi-net" data-msg="Nome da rede copiado!"><svg class="ic" aria-hidden="true"><use href="#i-copy"/></svg>Copiar rede</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- COMODIDADES -->
+      <section id="casa" class="reveal">
+        <div class="section-head">
+          <span class="sec-ico"><svg class="ic" aria-hidden="true"><use href="#i-bed"/></svg></span>
+          <span class="kicker">Conforto e praticidade</span>
+          <h2>Comodidades da casa</h2>
+          <p>A casa conta com itens de conforto, cozinha, lavanderia e lazer para tornar sua estadia mais prática. Confira as principais comodidades disponíveis.</p>
+        </div>
+        <div class="amen-grid">
+          <span class="amenity"><svg class="ic" aria-hidden="true"><use href="#i-snow"/></svg>Ar-condicionado</span>
+          <span class="amenity"><svg class="ic" aria-hidden="true"><use href="#i-tv"/></svg>TV</span>
+          <span class="amenity"><svg class="ic" aria-hidden="true"><use href="#i-utensils"/></svg>Cozinha completa</span>
+          <span class="amenity"><svg class="ic" aria-hidden="true"><use href="#i-flame"/></svg>Churrasqueira</span>
+          <span class="amenity"><svg class="ic" aria-hidden="true"><use href="#i-wash"/></svg>Máquina de lavar</span>
+          <span class="amenity"><svg class="ic" aria-hidden="true"><use href="#i-car"/></svg>Estacionamento gratuito</span>
+          <span class="amenity"><svg class="ic" aria-hidden="true"><use href="#i-drop"/></svg>Água quente</span>
+          <span class="amenity"><svg class="ic" aria-hidden="true"><use href="#i-bed"/></svg>Roupas de cama</span>
+          <span class="amenity"><svg class="ic" aria-hidden="true"><use href="#i-box"/></svg>Itens básicos</span>
+          <span class="amenity"><svg class="ic" aria-hidden="true"><use href="#i-wave"/></svg>Praia próxima</span>
+          <span class="amenity"><svg class="ic" aria-hidden="true"><use href="#i-sun"/></svg>Piscina</span>
+          <span class="amenity"><svg class="ic" aria-hidden="true"><use href="#i-wine"/></svg>Taças de vinho</span>
+        </div>
+
+        <details id="casa-cozinha">
+          <summary><span class="s-ico"><svg class="ic" aria-hidden="true"><use href="#i-utensils"/></svg></span>Cozinha e refeições<svg class="ic chev" aria-hidden="true"><use href="#i-chev"/></svg></summary>
+          <div class="details-body cols"><ul><li>Fogão</li><li>Forno</li><li>Micro-ondas</li><li>Refrigerador</li><li>Freezer</li><li>Chaleira elétrica</li><li>Liquidificador</li><li>Pratos, talheres e panelas</li><li>Utensílios básicos</li><li>Mesa de jantar</li></ul></div>
+        </details>
+        <details id="casa-quartos">
+          <summary><span class="s-ico"><svg class="ic" aria-hidden="true"><use href="#i-bed"/></svg></span>Quartos e banho<svg class="ic chev" aria-hidden="true"><use href="#i-chev"/></svg></summary>
+          <div class="details-body cols"><ul><li>Roupas de cama</li><li>Cortinas blackout</li><li>Cabides</li><li>Local para guardar roupas</li><li>Toalhas</li><li>Sabonete</li><li>Papel higiênico</li><li>Secador de cabelo</li><li>Água quente</li></ul></div>
+        </details>
+        <details id="casa-externa">
+          <summary><span class="s-ico"><svg class="ic" aria-hidden="true"><use href="#i-flame"/></svg></span>Área externa e lazer<svg class="ic chev" aria-hidden="true"><use href="#i-chev"/></svg></summary>
+          <div class="details-body cols"><ul><li>Churrasqueira</li><li>Utensílios para churrasco</li><li>Chuveiro externo</li><li>Piscinas adulto e infantil</li><li>Playground</li><li>Quadra de futebol</li></ul></div>
+        </details>
+      </section>
+
+      <!-- REGRAS -->
+      <section id="regras" class="reveal">
+        <div class="section-head">
+          <span class="sec-ico"><svg class="ic" aria-hidden="true"><use href="#i-list"/></svg></span>
+          <span class="kicker">Boa convivência</span>
+          <h2>Regras da casa e do condomínio</h2>
+          <p>Para manter uma convivência tranquila e uma experiência agradável para todos, pedimos sua colaboração com as regras abaixo. Agradecemos pelo cuidado com a casa e com as áreas comuns.</p>
+        </div>
+        <div class="rule-chips">
+          <div class="rule-chip"><svg class="ic" aria-hidden="true"><use href="#i-users"/></svg>Até 8 hóspedes</div>
+          <div class="rule-chip"><svg class="ic" aria-hidden="true"><use href="#i-party"/></svg>Sem festas ou eventos</div>
+          <div class="rule-chip"><svg class="ic" aria-hidden="true"><use href="#i-smoke"/></svg>Não fumar dentro da casa</div>
+          <div class="rule-chip"><svg class="ic" aria-hidden="true"><use href="#i-paw"/></svg>Sem animais de estimação</div>
+          <div class="rule-chip"><svg class="ic" aria-hidden="true"><use href="#i-moon"/></svg>Silêncio das 23h às 8h</div>
+        </div>
+
+        <details id="regras-convivencia" open>
+          <summary><span class="s-ico"><svg class="ic" aria-hidden="true"><use href="#i-shield"/></svg></span>Convivência e segurança<svg class="ic chev" aria-hidden="true"><use href="#i-chev"/></svg></summary>
+          <div class="details-body"><ul>
+            <li>Para o conforto e a segurança de todos, a casa recebe até 8 hóspedes.</li>
+            <li>Para preservar o sossego do condomínio, pedimos que não sejam realizadas festas ou eventos.</li>
+            <li>Caso deseje receber alguém, fale conosco antes. A entrada de visitantes depende de autorização prévia.</li>
+            <li>A reserva deve permanecer sob a responsabilidade da pessoa cadastrada e não pode ser transferida, cedida ou sublocada a terceiros.</li>
+            <li>Entre 23h e 8h, ajude-nos a preservar o descanso e o bem-estar dos demais moradores, mantendo o ambiente silencioso.</li>
+          </ul></div>
+        </details>
+        <details id="regras-cuidados">
+          <summary><span class="s-ico"><svg class="ic" aria-hidden="true"><use href="#i-home"/></svg></span>Cuidados com a casa<svg class="ic chev" aria-hidden="true"><use href="#i-chev"/></svg></summary>
+          <div class="details-body"><ul>
+            <li>Para manter os ambientes agradáveis, pedimos que não fume nem utilize cigarros eletrônicos dentro da casa.</li>
+            <li>A casa não recebe animais de estimação. Agradecemos a compreensão.</li>
+            <li>Pedimos apenas que cuide dos móveis, utensílios e equipamentos com o mesmo carinho que teria em sua própria casa.</li>
+            <li>Ao sair, desligue as luzes, os aparelhos de ar-condicionado e os demais equipamentos elétricos.</li>
+          </ul></div>
+        </details>
+        <details id="regras-comuns">
+          <summary><span class="s-ico"><svg class="ic" aria-hidden="true"><use href="#i-wave"/></svg></span>Áreas comuns<svg class="ic chev" aria-hidden="true"><use href="#i-chev"/></svg></summary>
+          <div class="details-body"><p>Aproveite as piscinas, o playground, a quadra e as demais áreas comuns respeitando as orientações do condomínio. Assim, todos podem desfrutar desses espaços com segurança e tranquilidade.</p></div>
+        </details>
+      </section>
+
+      <!-- CHECKOUT -->
+      <section id="checkout" class="reveal">
+        <div class="section-head">
+          <span class="sec-ico"><svg class="ic" aria-hidden="true"><use href="#i-logout"/></svg></span>
+          <span class="kicker">Antes de ir</span>
+          <h2>Como fazer o checkout</h2>
+          <p>Esperamos que sua estadia tenha sido especial. O checkout deve ser concluído até as 13h. Antes de sair, siga estes cuidados simples.</p>
+        </div>
+        <div class="panel">
+          <div class="check-top"><h3>Checklist de saída</h3><span class="check-count" id="checkCount" aria-live="polite">0 de 5 concluídos</span></div>
+          <div class="bar" aria-hidden="true"><i id="checkBar"></i></div>
+          <ul class="checklist" id="checklist">
+            <li><label><input type="checkbox"><span class="box"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><span class="txt"><strong>Recolha o lixo</strong>Reúna o lixo da estadia e deixe-o no local indicado nas orientações enviadas pelo anfitrião.</span></label></li>
+            <li><label><input type="checkbox"><span class="box"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><span class="txt"><strong>Desligue os equipamentos</strong>Confira o ar-condicionado, as luzes, a televisão, os eletrodomésticos e o gás, caso tenha sido utilizado.</span></label></li>
+            <li><label><input type="checkbox"><span class="box"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><span class="txt"><strong>Confira seus pertences</strong>Feche portas e janelas com cuidado e veja se nenhum objeto pessoal ficou para trás.</span></label></li>
+            <li><label><input type="checkbox"><span class="box"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><span class="txt"><strong>Devolva a chave</strong>Deixe-a no local informado nas orientações de checkout.</span></label></li>
+            <li><label><input type="checkbox"><span class="box"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></span><span class="txt"><strong>Confirme sua saída</strong>Envie uma mensagem pelo WhatsApp informando que o checkout foi concluído.</span></label></li>
+          </ul>
+          <div class="cta-row">
+            <a class="btn btn-wa" href="https://wa.me/5534999792398?text=Ol%C3%A1!%20Conclu%C3%ADmos%20o%20checkout%20do%20Recanto%20do%20Sossego.%20Obrigado!" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Avisar que saímos</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- DICAS -->
+      <section id="dicas" class="reveal">
+        <div class="section-head">
+          <span class="sec-ico"><svg class="ic" aria-hidden="true"><use href="#i-compass"/></svg></span>
+          <span class="kicker">Explore a região</span>
+          <h2>Dicas da região</h2>
+          <p>Aqui você encontrará indicações de restaurantes, praias, passeios e serviços próximos para aproveitar melhor a região.</p>
+        </div>
+        <div class="grid">
+          <article class="card tip"><span class="ico-box coral"><svg class="ic" aria-hidden="true"><use href="#i-utensils"/></svg></span><h3>Onde comer</h3><p>Indicações de restaurantes e links de localização serão adicionados aqui.</p><span class="soon">Em breve</span></article>
+          <article class="card tip"><span class="ico-box"><svg class="ic" aria-hidden="true"><use href="#i-wave"/></svg></span><h3>Passeios</h3><p>Praias, atrações e experiências da região serão adicionadas aqui.</p><span class="soon">Em breve</span></article>
+          <article class="card tip"><span class="ico-box coral"><svg class="ic" aria-hidden="true"><use href="#i-cart"/></svg></span><h3>Serviços próximos</h3><p>Mercados, padarias, farmácias e postos próximos serão adicionados aqui.</p><span class="soon">Em breve</span></article>
+        </div>
+      </section>
+
+      <!-- CONTATO -->
+      <section id="contato" class="reveal">
+        <div class="contact">
+          <span class="kicker">Conte conosco</span>
+          <h2>Fale com o anfitrião</h2>
+          <p>Se precisar de orientação ou tiver alguma dúvida durante a estadia, fale conosco pelo WhatsApp. Estamos à disposição para ajudar.</p>
+          <div class="phone">WhatsApp: <a href="tel:+5534999792398" style="color:inherit;display:inline-block;padding:12px 6px">(34) 99979-2398</a></div>
+          <div class="cta-row">
+            <a class="btn btn-wa" href="https://wa.me/5534999792398?text=Ol%C3%A1!%20Estou%20hospedado(a)%20no%20Recanto%20do%20Sossego%20e%20preciso%20de%20ajuda." target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-chat"/></svg>Falar com o anfitrião</a>
+            <a class="btn btn-light" href="tel:+5534999792398"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg>Ligar agora</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-title">Recanto do Sossego</div>
+      <div>Praia do Refúgio • Mosqueiro • Aracaju/SE</div>
+      <p>Desejamos uma estadia tranquila e cheia de bons momentos. Será um prazer receber você novamente!</p>
+      <ul class="foot-links">
+        <li><a href="#chegar">Como chegar</a></li>
+        <li><a href="#checkin">Check-in</a></li>
+        <li><a href="#regras">Regras</a></li>
+        <li><a href="#checkout">Checkout</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </footer>
+  </div>
+
+  <button class="to-top" id="toTop" type="button" aria-label="Voltar ao topo"><svg class="ic" aria-hidden="true"><use href="#i-up"/></svg></button>
+  <a class="float-wa" aria-label="Falar com o anfitrião no WhatsApp" href="https://wa.me/5534999792398?text=Ol%C3%A1!%20Estou%20hospedado(a)%20no%20Recanto%20do%20Sossego%20e%20preciso%20de%20ajuda." target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-chat"/></svg>WhatsApp</a>
+  <div class="toast" id="toast" role="status" aria-live="polite"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg><span id="toastMsg">Copiado!</span></div>
+
+  <script>
+    (function(){
+      'use strict';
+      document.documentElement.classList.add('js');
+
+      var $  = function(s,c){return (c||document).querySelector(s)};
+      var $$ = function(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s))};
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var mobile = window.matchMedia('(max-width: 980px)');
+
+      /* ---------- MENU MOBILE ---------- */
+      var sidebar=$('#sidebar'), overlay=$('#overlay'), menuBtn=$('#menuBtn'), closeBtn=$('#closeBtn');
+      function setMenu(open){
+        sidebar.classList.toggle('open',open);
+        overlay.classList.toggle('on',open);
+        menuBtn.setAttribute('aria-expanded',String(open));
+        document.body.classList.toggle('lock',open && mobile.matches);
+        if(open){ var f=$('.nav-link',sidebar); if(f) f.focus({preventScroll:true}); }
+      }
+      menuBtn.addEventListener('click',function(){ setMenu(!sidebar.classList.contains('open')) });
+      closeBtn.addEventListener('click',function(e){ e.preventDefault(); e.stopPropagation(); setMenu(false); menuBtn.focus(); });
+      overlay.addEventListener('click',function(){ setMenu(false) });
+      document.addEventListener('keydown',function(e){ if(e.key==='Escape' && sidebar.classList.contains('open')){ setMenu(false); menuBtn.focus(); } });
+      var onMq=function(){ if(!mobile.matches) setMenu(false) };
+      if(mobile.addEventListener) mobile.addEventListener('change',onMq); else mobile.addListener(onMq);
+
+      /* ---------- NAVEGAÇÃO POR ÂNCORAS (mantém todos os links) ---------- */
+      function openTarget(el){
+        if(!el) return;
+        if(el.tagName==='DETAILS') el.open=true;
+        var p=el.parentElement && el.parentElement.closest('details');
+        if(p) p.open=true;
+      }
+      var lockSec=null, lockUntil=0;
+      function goTo(id,push){
+        var el=document.getElementById(id);
+        if(!el) return false;
+        openTarget(el);
+        var far=Math.abs(el.getBoundingClientRect().top)>window.innerHeight*3;
+        el.scrollIntoView({behavior:(reduce||far)?'instant':'smooth',block:'start'});
+        var focusEl = el.tagName==='DETAILS' ? $('summary',el) : el;
+        if(focusEl){ if(!focusEl.hasAttribute('tabindex') && el.tagName!=='DETAILS') focusEl.setAttribute('tabindex','-1'); try{focusEl.focus({preventScroll:true})}catch(e){} }
+        if(push){ try{ history.pushState(null,'','#'+id) }catch(e){ } }
+        var sec = el.closest ? el.closest('main > section[id]') : null;
+        lockSec = sec ? sec.id : null; lockUntil = Date.now()+1300;
+        if(sec) setActive(sec.id);
+        markSub(id);
+        return true;
+      }
+      document.addEventListener('click',function(e){
+        var a=e.target.closest && e.target.closest('a[href^="#"]');
+        if(!a) return;
+        var href=a.getAttribute('href');
+        if(href.length<2) return;
+        var id=decodeURIComponent(href.slice(1));
+        if(!document.getElementById(id)) return;
+        e.preventDefault();
+        if(sidebar.classList.contains('open')) setMenu(false);
+        goTo(id,true);
+      });
+      window.addEventListener('hashchange',function(){ var id=decodeURIComponent(location.hash.slice(1)); if(id) goTo(id,false); });
+      window.addEventListener('load',function(){ if(location.hash.length>1){ setTimeout(function(){ goTo(decodeURIComponent(location.hash.slice(1)),false) },80) } });
+
+      /* ---------- DESTAQUE DO MENU (scroll-spy) ---------- */
+      var sections=$$('main > section[id]');
+      var navLinks=$$('.nav-link[data-sec]');
+      var subLinks=$$('.sub-link');
+      var sbNav=$('#sbNav');
+      var current=null;
+
+      function markSub(id){
+        subLinks.forEach(function(l){ l.classList.toggle('active', l.getAttribute('href')==='#'+id) });
+      }
+      function setActive(id){
+        if(id===current) return;
+        current=id;
+        navLinks.forEach(function(l){
+          var on = l.dataset.sec===id;
+          l.classList.toggle('active',on);
+          if(on){ l.setAttribute('aria-current','true'); keepVisible(l); } else l.removeAttribute('aria-current');
+        });
+        subLinks.forEach(function(l){ l.classList.remove('active') });
+      }
+      function keepVisible(el){
+        var top=el.offsetTop - sbNav.offsetTop, bottom=top+el.offsetHeight;
+        if(top < sbNav.scrollTop+20) sbNav.scrollTo({top:Math.max(0,top-60),behavior:reduce?'auto':'smooth'});
+        else if(bottom > sbNav.scrollTop+sbNav.clientHeight-20) sbNav.scrollTo({top:bottom-sbNav.clientHeight+60,behavior:reduce?'auto':'smooth'});
+      }
+
+      /* ---------- SCROLL: progresso, topo, spy ---------- */
+      var bar=$('#progress'), toTop=$('#toTop'), ticking=false;
+      function onScroll(){
+        var h=document.documentElement, max=h.scrollHeight-window.innerHeight;
+        bar.style.width=(max>0?Math.min(100,(window.scrollY/max)*100):0)+'%';
+        toTop.classList.toggle('on',window.scrollY>700);
+        var line=window.innerHeight*0.3, found=null;
+        for(var i=0;i<sections.length;i++){ if(sections[i].getBoundingClientRect().top<=line) found=sections[i].id; }
+        if(window.innerHeight+window.scrollY>=h.scrollHeight-6) found=sections[sections.length-1].id;
+        if(lockSec && Date.now()<lockUntil) found=lockSec;
+        if(found) setActive(found); else if(current){ current=null; navLinks.forEach(function(l){l.classList.remove('active');l.removeAttribute('aria-current')}); }
+        ticking=false;
+      }
+      window.addEventListener('scroll',function(){ if(!ticking){ticking=true;requestAnimationFrame(onScroll)} },{passive:true});
+      window.addEventListener('resize',onScroll);
+      onScroll();
+      toTop.addEventListener('click',function(){ window.scrollTo({top:0,behavior:reduce?'auto':'smooth'}); history.replaceState(null,'',location.pathname+location.search); });
+
+      /* ---------- ANIMAÇÃO DE ENTRADA ---------- */
+      var reveals=$$('.reveal');
+      if('IntersectionObserver' in window && !reduce){
+        var io=new IntersectionObserver(function(entries){
+          entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+        },{rootMargin:'0px 0px -8% 0px',threshold:.06});
+        reveals.forEach(function(r){ io.observe(r) });
+      } else reveals.forEach(function(r){ r.classList.add('in') });
+
+      /* ---------- COPIAR (Wi-Fi, endereço) ---------- */
+      var toast=$('#toast'), toastMsg=$('#toastMsg'), tt;
+      function showToast(msg){
+        toastMsg.textContent=msg; toast.classList.add('on'); clearTimeout(tt);
+        tt=setTimeout(function(){ toast.classList.remove('on') },2000);
+      }
+      function copyText(value,msg){
+        var done=function(){ showToast(msg||'Copiado!') };
+        if(navigator.clipboard && window.isSecureContext){
+          navigator.clipboard.writeText(value).then(done,function(){ fallback() });
+        } else fallback();
+        function fallback(){
+          var t=document.createElement('textarea'); t.value=value; t.setAttribute('readonly','');
+          t.style.cssText='position:fixed;opacity:0;top:0;left:0'; document.body.appendChild(t); t.select();
+          try{ document.execCommand('copy'); done(); }catch(e){ showToast('Não foi possível copiar'); }
+          t.remove();
+        }
+      }
+      $$('[data-copy],[data-copy-id]').forEach(function(btn){
+        btn.addEventListener('click',function(){
+          var v=btn.getAttribute('data-copy');
+          if(!v){ var el=document.getElementById(btn.getAttribute('data-copy-id')); v=el?el.textContent.trim():''; }
+          if(v) copyText(v,btn.getAttribute('data-msg'));
+        });
+      });
+
+      /* ---------- CHECKLIST DO CHECKOUT ---------- */
+      var items=$$('#checklist input[type="checkbox"]'), cCount=$('#checkCount'), cBar=$('#checkBar'), KEY='recanto-checkout';
+      var saved=[]; try{ saved=JSON.parse(sessionStorage.getItem(KEY)||'[]') }catch(e){}
+      function updateChecks(){
+        var n=0, state=[];
+        items.forEach(function(i,idx){ i.closest('li').classList.toggle('done',i.checked); if(i.checked) n++; state[idx]=i.checked; });
+        cCount.textContent=n+' de '+items.length+' concluídos';
+        cBar.style.width=(n/items.length*100)+'%';
+        try{ sessionStorage.setItem(KEY,JSON.stringify(state)) }catch(e){}
+      }
+      items.forEach(function(i,idx){ i.checked=!!saved[idx]; i.addEventListener('change',updateChecks); });
+      updateChecks();
+
+      /* ---------- ECONOMIA DE BATERIA: pausa as ondas fora da tela ---------- */
+      var heroEl=$('.hero');
+      if('IntersectionObserver' in window && heroEl){
+        new IntersectionObserver(function(en){ heroEl.classList.toggle('paused',!en[0].isIntersecting) }).observe(heroEl);
+      }
+      document.addEventListener('visibilitychange',function(){ if(heroEl) heroEl.classList.toggle('paused',document.hidden) });
+
+      /* ---------- GESTO: deslizar o menu para a esquerda fecha ---------- */
+      var sx=null, sy=null;
+      sidebar.addEventListener('touchstart',function(e){ var t=e.touches[0]; sx=t.clientX; sy=t.clientY; },{passive:true});
+      sidebar.addEventListener('touchend',function(e){
+        if(sx===null) return; var t=e.changedTouches[0], dx=t.clientX-sx, dy=Math.abs(t.clientY-sy);
+        if(dx<-60 && dy<50) setMenu(false); sx=null;
+      },{passive:true});
+
+      /* ---------- IMPRESSÃO: abre todos os acordeões ---------- */
+      window.addEventListener('beforeprint',function(){ $$('details').forEach(function(d){ d.open=true }); });
+    })();
+  </script>
+</body>
+</html>
