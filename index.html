@@ -1,7 +1,62 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="acesso-bloqueado">
 <head>
   <meta charset="UTF-8">
+  <!-- CONTROLE DE ACESSO: configuração e validação ficam em acesso.js (mesma pasta) -->
+  <script src="acesso.js"></script>
+  <script src="qr.js"></script>
+  <script>
+    (function(){
+      var A = window.ACESSO, KEY = "recanto_cod", NK = "recanto_nome", inicial = "nenhum";
+      var lsGet = function(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } };
+      var lsSet = function(k,v){ try{ localStorage.setItem(k,v); }catch(e){} };
+      var lsDel = function(k){ try{ localStorage.removeItem(k); }catch(e){} };
+      window.__acesso = { ok:false, inicial:"erro-carga", expira:null, nome:"", tentar:function(){ return "erro"; } };
+      if(!A) return;                                   // se acesso.js não carregar, o guia continua bloqueado
+
+      var guardado = null;
+      function liberar(cod){
+        guardado = cod; lsSet(KEY, cod);
+        window.__acesso.expira = A.analisar(cod).expira;
+        window.__acesso.nome = lsGet(NK) || "";
+        document.documentElement.classList.remove("acesso-bloqueado");
+        window.__acesso.ok = true;
+        try{ document.dispatchEvent(new Event("acesso-liberado")); }catch(e){}
+        setInterval(verificar, 30000);
+        document.addEventListener("visibilitychange", function(){ if(!document.hidden) verificar(); });
+      }
+      function verificar(){ if(guardado && A.analisar(guardado).estado !== "ok") location.reload(); }
+
+      // 1) link/QR com ?c=CODIGO (&n=Nome)
+      var p = null, n = null;
+      try{ var q = new URLSearchParams(location.search); p = q.get("c"); n = q.get("n"); }catch(e){}
+      if(p !== null){
+        var r = A.analisar(p);
+        if(r.estado === "ok"){
+          if(n){ n = String(n).replace(/[<>&"'\u0000-\u001f]/g,"").trim().slice(0,30); if(n) lsSet(NK, n); else lsDel(NK); } else lsDel(NK);
+          liberar(r.codigo); try{ history.replaceState(null,"",location.pathname+location.hash); }catch(e){}
+        }
+        else inicial = (r.estado === "expirado" || r.estado === "revogado") ? "expirado" : "invalido";
+      }
+      // 2) aparelho já autorizado antes
+      if(!window.__acesso.ok){
+        var s = lsGet(KEY);
+        if(s){
+          var rs = A.analisar(s);
+          if(rs.estado === "ok") liberar(rs.codigo);
+          else { lsDel(KEY); lsDel(NK); if(inicial === "nenhum") inicial = "expirado"; }
+        }
+      }
+      window.__acesso.inicial = inicial;
+      // 3) digitado na tela
+      window.__acesso.tentar = function(valor){
+        var r = A.analisar(valor);
+        if(r.estado === "ok"){ lsDel(NK); liberar(r.codigo); return "ok"; }
+        return (r.estado === "expirado" || r.estado === "revogado") ? "expirado" : "erro";
+      };
+    })();
+  </script>
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="theme-color" content="#0b3d3b">
   <meta name="color-scheme" content="light">
@@ -372,9 +427,157 @@
       .js .reveal{opacity:1;transform:none}
       section{margin:28px 0;break-inside:avoid-page}
     }
+
+    /* =========================================================
+       TELA DE ACESSO (código do hóspede)
+    ========================================================= */
+    #acesso-gate{display:none}
+    html.acesso-bloqueado body{overflow:hidden}
+    html.acesso-bloqueado body > *:not(#acesso-gate){display:none!important}
+    html.acesso-bloqueado #acesso-gate{display:flex}
+    #acesso-gate{position:fixed;inset:0;z-index:9999;align-items:center;justify-content:center;
+      min-height:100vh;min-height:100dvh;overflow-y:auto;color:#fff;text-align:center;
+      padding:max(20px,env(safe-area-inset-top)) max(20px,env(safe-area-inset-right)) max(20px,env(safe-area-inset-bottom)) max(20px,env(safe-area-inset-left));
+      background:radial-gradient(circle at 82% 14%,#2db1a6 0,transparent 34%),radial-gradient(circle at 8% 94%,rgba(232,136,90,.38),transparent 30%),linear-gradient(150deg,#0a514f 0%,#0d6b67 48%,#178e86 100%)}
+    #acesso-gate .ag-sun{position:absolute;right:9%;top:9%;width:120px;height:120px;border-radius:50%;
+      background:radial-gradient(circle at 35% 35%,#ffd9b8,var(--coral) 70%);opacity:.8;
+      box-shadow:0 0 0 16px rgba(232,136,90,.13),0 0 0 40px rgba(232,136,90,.07);pointer-events:none}
+    #acesso-gate .ag-box{position:relative;z-index:1;width:100%;max-width:400px;padding:34px 26px 26px;border-radius:26px;
+      background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.28);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+      box-shadow:0 24px 60px rgba(0,0,0,.28)}
+    #acesso-gate .ag-logo{width:64px;height:64px;margin:0 auto 14px;border-radius:19px;display:grid;place-items:center;
+      background:linear-gradient(135deg,var(--coral),#f4ad82);box-shadow:0 8px 20px rgba(0,0,0,.25)}
+    #acesso-gate .ag-logo svg{width:32px;height:32px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+    #acesso-gate h1{font-family:var(--serif);font-size:2rem;line-height:1.05;margin:0 0 6px;letter-spacing:-.02em}
+    #acesso-gate .ag-sub{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;font-weight:800;color:#bfe6e1;margin:0 0 18px}
+    #acesso-gate p{margin:0 0 16px;color:#eafaf8;line-height:1.5}
+    #acesso-gate input{width:100%;min-height:54px;padding:12px 14px;font:inherit;font-size:1.25rem;font-weight:800;letter-spacing:.08em;
+      text-align:center;text-transform:uppercase;color:var(--ink);background:#fff;border:2px solid transparent;border-radius:14px;outline:none}
+    #acesso-gate input::placeholder{font-weight:600;letter-spacing:.02em;text-transform:none;color:#7a8e8f;font-size:1rem}
+    #acesso-gate input:focus{border-color:var(--coral)}
+    #acesso-gate .ag-erro{min-height:24px;margin:8px 0 6px;font-weight:700;color:#ffd3c0}
+    #acesso-gate .ag-btn{width:100%;min-height:52px;border:0;border-radius:14px;font-weight:850;font-size:1.05rem;cursor:pointer;
+      background:var(--coral);color:#3b1a0a;box-shadow:0 8px 18px rgba(232,136,90,.35)}
+    #acesso-gate .ag-btn:active{transform:scale(.97)}
+    #acesso-gate .ag-wa{display:flex;align-items:center;justify-content:center;gap:8px;min-height:48px;margin-top:12px;border-radius:14px;
+      text-decoration:none;font-weight:800;color:#fff;border:1px solid rgba(255,255,255,.4);background:rgba(255,255,255,.1)}
+    #acesso-gate .ag-small{margin:14px 0 0;font-size:.82rem;color:#bfe6e1}
+    #acesso-gate .ag-view[hidden]{display:none}
+
+    /* =========================================================
+       EXPERIÊNCIA PERSONALIZADA, WI-FI QR, DICAS, FEEDBACK
+    ========================================================= */
+    .greet{margin:20px 0 0;font-family:var(--serif);font-size:clamp(1.15rem,2.6vw,1.5rem);color:#ffe3cf;font-weight:700;letter-spacing:-.01em}
+    .greet:empty{display:none}
+    .stay{display:none;align-items:center;gap:12px;margin:2px 0 24px;padding:11px 18px;border-radius:16px;background:rgba(8,43,42,.38);border:1px solid rgba(255,255,255,.26);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);font-weight:750;font-size:.98rem;max-width:max-content}
+    .stay.on{display:inline-flex}
+    .stay .ic{color:#ffd0b3;font-size:1.3rem}
+    .stay small{display:block;font-weight:600;color:#c9e9e5;font-size:.8rem}
+    .stay.hoje{background:rgba(232,136,90,.34);border-color:rgba(255,208,179,.6)}
+    h1{margin-top:14px}
+    .wifi-qr{grid-column:1/-1;display:none;align-items:center;gap:22px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.28);border-radius:18px;padding:18px}
+    .wifi-qr.on{display:flex}
+    .wifi-qr canvas{width:168px;height:168px;flex:none;border-radius:14px;background:#fff;image-rendering:pixelated}
+    .wifi-qr b{display:block;font-size:1.05rem;margin-bottom:4px}
+    .wifi-qr p{margin:0;color:#e3f6f4;font-size:.93rem}
+    .map-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+    .map-link{display:inline-flex;align-items:center;gap:7px;text-decoration:none;font-weight:750;font-size:.88rem;color:var(--ocean-d);background:var(--ocean-l);border:1px solid #c3ddd9;border-radius:999px;padding:9px 14px;min-height:40px;transition:background .2s,transform .15s}
+    .map-link:hover{background:#d3ebe7;transform:translateY(-2px)}
+    .map-link .ic{color:var(--coral-d)}
+    .tip-note{margin:18px 0 0;color:var(--muted);font-size:.9rem;display:flex;gap:8px;align-items:flex-start}
+    .tip-note .ic{margin-top:3px;color:var(--ocean)}
+    .feedback{background:linear-gradient(160deg,#fff,#fdf3ea);border:1px solid var(--sand-d);border-radius:26px;padding:34px 26px;box-shadow:var(--shadow);text-align:center}
+    .feedback h3{font-family:var(--serif);font-size:clamp(1.4rem,3.4vw,1.9rem);margin:6px 0}
+    .feedback p{color:var(--muted);max-width:560px;margin:0 auto 4px}
+    .stars{display:flex;justify-content:center;gap:6px;margin:18px 0 6px}
+    .star{width:54px;height:54px;border:0;background:transparent;cursor:pointer;border-radius:14px;display:grid;place-items:center;color:#d4c3ae;transition:transform .15s,color .15s}
+    .star .ic{width:34px;height:34px;fill:currentColor;stroke:currentColor}
+    .star.on{color:#f2a33a}
+    .star:active{transform:scale(.88)}
+    .star:hover{transform:translateY(-2px)}
+    .rate-label{min-height:24px;font-weight:800;color:var(--coral-d);margin-bottom:10px}
+    .feedback .cta-row{justify-content:center}
+    .feedback .small{font-size:.86rem;margin-top:18px}
+    @media(max-width:780px){
+      .wifi-qr.on{flex-direction:column;text-align:center}
+      .wifi-qr canvas{width:200px;height:200px}
+      .stay{max-width:100%}
+      .star{width:50px;height:50px}
+      .feedback{padding:28px 18px}
+    }
+
+    .picks-head{margin:0 0 14px}
+    .picks-head h3{display:flex;align-items:center;gap:10px;margin:0 0 4px;font-family:var(--serif);font-size:clamp(1.3rem,3vw,1.7rem)}
+    .picks-head h3 .ic{color:var(--coral-d)}
+    .picks-head p{margin:0;color:var(--muted)}
+    .picks{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+    .pick{display:flex;align-items:center;gap:14px;text-decoration:none;background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px 16px;min-height:72px;box-shadow:var(--shadow-s);transition:transform .2s,box-shadow .2s,border-color .2s}
+    .pick:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:var(--ocean)}
+    .pick:active{transform:scale(.98)}
+    .pick-ico{flex:none;width:46px;height:46px;border-radius:14px;display:grid;place-items:center;font-size:1.35rem;background:linear-gradient(135deg,var(--ocean),#1a9a91);color:#fff;box-shadow:0 6px 14px rgba(13,107,103,.25)}
+    .pick-txt{flex:1;min-width:0}
+    .pick-txt b{display:block;font-size:1.02rem;line-height:1.25;color:var(--ink)}
+    .pick-txt small{display:block;color:var(--muted);font-weight:650;font-size:.8rem;margin-top:2px}
+    .pick-go{flex:none;color:var(--coral-d);font-size:1.15rem}
+    .picks-more{margin:14px 0 26px;color:var(--muted);font-size:.95rem}
+    @media(max-width:780px){.picks{grid-template-columns:1fr}}
+    @media print{.wifi-qr,.stars{display:none!important}}
   </style>
 </head>
 <body>
+  <!-- TELA DE ACESSO -->
+  <div id="acesso-gate" role="dialog" aria-modal="true" aria-labelledby="ag-titulo">
+    <span class="ag-sun" aria-hidden="true"></span>
+    <div class="ag-box">
+      <div class="ag-logo" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/></svg></div>
+      <h1 id="ag-titulo">Recanto do Sossego</h1>
+      <div class="ag-sub">Guia do hóspede</div>
+
+      <div class="ag-view" id="ag-form">
+        <p>Seja bem-vindo! Digite o código de acesso enviado pelo anfitrião para abrir o guia da sua estadia.</p>
+        <form id="ag-f" autocomplete="off" novalidate>
+          <label class="sr-only" for="ag-cod">Código de acesso</label>
+          <input id="ag-cod" type="text" inputmode="text" autocapitalize="characters" autocorrect="off" autocomplete="off" spellcheck="false" placeholder="Código de acesso" maxlength="24">
+          <div class="ag-erro" id="ag-erro" role="alert" aria-live="assertive"></div>
+          <button class="ag-btn" type="submit">Entrar</button>
+        </form>
+        <a class="ag-wa" id="ag-wa1" href="#" target="_blank" rel="noopener">Não tem o código? Peça ao anfitrião</a>
+      </div>
+
+      <div class="ag-view" id="ag-exp" hidden>
+        <p><strong>Este acesso expirou.</strong><br>Para consultar o guia novamente, solicite um novo código ao anfitrião.</p>
+        <a class="ag-wa" id="ag-wa2" href="#" target="_blank" rel="noopener">Falar com o anfitrião</a>
+      </div>
+
+      <noscript><p class="ag-small">Ative o JavaScript do navegador para acessar o guia.</p></noscript>
+    </div>
+  </div>
+  <script>
+    (function(){
+      var A = window.ACESSO, S = window.__acesso || {};
+      var form=document.getElementById("ag-form"), exp=document.getElementById("ag-exp"),
+          f=document.getElementById("ag-f"), inp=document.getElementById("ag-cod"), erro=document.getElementById("ag-erro");
+      if(A){
+        var msg = encodeURIComponent("Olá! Preciso do código de acesso ao guia do Recanto do Sossego.");
+        var link = "https://wa.me/" + String(A.whatsapp||"").replace(/\D/g,"") + "?text=" + msg;
+        ["ag-wa1","ag-wa2"].forEach(function(id){ var a=document.getElementById(id); if(a) a.href=link; });
+      } else {
+        erro.textContent = "Não foi possível carregar o acesso. Verifique sua conexão e atualize a página.";
+      }
+      function mostrarExpirado(){ form.hidden=true; exp.hidden=false; }
+      if(S.inicial === "expirado") mostrarExpirado();
+      if(S.inicial === "invalido") erro.textContent = "Código inválido. Confira e tente novamente.";
+      f.addEventListener("submit", function(e){
+        e.preventDefault();
+        var r = window.__acesso.tentar(inp.value);
+        if(r === "ok"){ inp.blur(); window.scrollTo(0,0); window.dispatchEvent(new Event("scroll")); }
+        else if(r === "expirado"){ mostrarExpirado(); }
+        else { erro.textContent = "Código inválido. Confira e tente novamente."; inp.select(); }
+      });
+      inp.addEventListener("input", function(){ erro.textContent=""; });
+    })();
+  </script>
+
 
   <!-- ÍCONES (sprite SVG) -->
   <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
@@ -426,6 +629,9 @@
       <symbol id="i-play" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></symbol>
       <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
       <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M9 18h6M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.3h6c0-1 .4-1.8 1-2.3A7 7 0 0 0 12 2z"/></symbol>
+      <symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></symbol>
+      <symbol id="i-star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></symbol>
+      <symbol id="i-qr" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zM20 14v1M14 20h1M17 20h4v1M20 17v-1"/></symbol>
     </defs>
   </svg>
 
@@ -487,6 +693,7 @@
       <ul class="nav-list">
         <li><a class="nav-link" data-sec="checkout" href="#checkout"><svg class="ic" aria-hidden="true"><use href="#i-logout"/></svg>Checkout</a></li>
         <li><a class="nav-link" data-sec="dicas" href="#dicas"><svg class="ic" aria-hidden="true"><use href="#i-compass"/></svg>Dicas da região</a></li>
+        <li><a class="nav-link" data-sec="voltar" href="#voltar"><svg class="ic" aria-hidden="true"><use href="#i-heart"/></svg>Sua opinião</a></li>
         <li><a class="nav-link" data-sec="contato" href="#contato"><svg class="ic" aria-hidden="true"><use href="#i-chat"/></svg>Contato</a></li>
       </ul>
     </nav>
@@ -508,7 +715,9 @@
 
       <div class="wrap hero-inner">
         <span class="eyebrow"><svg class="ic" aria-hidden="true"><use href="#i-book"/></svg>Guia digital do hóspede</span>
+        <p class="greet" id="greet" aria-live="polite"></p>
         <h1>Recanto do Sossego</h1>
+        <div class="stay" id="stay" role="status"><svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg><span><span id="stayMain"></span><small id="staySub"></small></span></div>
         <p class="lead">Seja muito bem-vindo ao Recanto do Sossego! Preparamos este guia com carinho para facilitar sua chegada e ajudar você a aproveitar cada momento da estadia, com conforto, tranquilidade e praticidade à beira-mar.</p>
         <div class="hero-cta">
           <a class="btn btn-coral" href="#chegar"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg>Como chegar</a>
@@ -631,7 +840,9 @@
           <div class="wifi-actions">
             <button class="copy" type="button" data-copy-id="wifi-pass" data-msg="Senha copiada!"><svg class="ic" aria-hidden="true"><use href="#i-copy"/></svg>Copiar senha</button>
             <button class="copy ghost" type="button" data-copy-id="wifi-net" data-msg="Nome da rede copiado!"><svg class="ic" aria-hidden="true"><use href="#i-copy"/></svg>Copiar rede</button>
+            <button class="copy ghost" type="button" id="wifiQrBtn" aria-expanded="false" aria-controls="wifiQr"><svg class="ic" aria-hidden="true"><use href="#i-qr"/></svg>QR Code</button>
           </div>
+          <div class="wifi-qr" id="wifiQr"><canvas id="wifiCanvas" width="10" height="10" role="img" aria-label="QR Code para conectar ao Wi-Fi"></canvas><div><b>Conecte sem digitar</b><p>Aponte a câmera de outro celular para este código e toque em &ldquo;Conectar&rdquo;. Funciona na câmera do iPhone e na maioria dos Android.</p></div></div>
         </div>
       </section>
 
@@ -743,15 +954,43 @@
           <span class="sec-ico"><svg class="ic" aria-hidden="true"><use href="#i-compass"/></svg></span>
           <span class="kicker">Explore a região</span>
           <h2>Dicas da região</h2>
-          <p>Aqui você encontrará indicações de restaurantes, praias, passeios e serviços próximos para aproveitar melhor a região.</p>
+          <p>Nossas indicações e atalhos rápidos para encontrar restaurantes, praias, passeios e serviços perto da casa.</p>
         </div>
+        <div class="picks-head"><h3><svg class="ic" aria-hidden="true"><use href="#i-heart"/></svg>Indicações do anfitrião</h3><p>Lugares que recomendamos conhecer durante a estadia.</p></div>
+        <!-- PARA ADICIONAR UM LUGAR: copie uma linha <a class="pick" ...> abaixo, troque o nome e o texto depois de query= no link. -->
+        <div class="picks">
+            <a class="pick" href="https://www.google.com/maps/search/?api=1&query=Dunna%20Beach%20Club%20Aracaju" target="_blank" rel="noopener"><span class="pick-ico"><svg class="ic" aria-hidden="true"><use href="#i-wave"/></svg></span><span class="pick-txt"><b>Dunna Beach Club</b><small>Ver no mapa</small></span><svg class="ic pick-go" aria-hidden="true"><use href="#i-nav"/></svg></a>
+            <a class="pick" href="https://www.google.com/maps/search/?api=1&query=Feira%20do%20Turista%20Aracaju" target="_blank" rel="noopener"><span class="pick-ico"><svg class="ic" aria-hidden="true"><use href="#i-bag"/></svg></span><span class="pick-txt"><b>Feira do Turista</b><small>Ver no mapa</small></span><svg class="ic pick-go" aria-hidden="true"><use href="#i-nav"/></svg></a>
+            <a class="pick" href="https://www.google.com/maps/search/?api=1&query=Casa%20do%20Mangue%20Aracaju" target="_blank" rel="noopener"><span class="pick-ico"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg></span><span class="pick-txt"><b>Casa do Mangue</b><small>Ver no mapa</small></span><svg class="ic pick-go" aria-hidden="true"><use href="#i-nav"/></svg></a>
+            <a class="pick" href="https://www.google.com/maps/search/?api=1&query=Praia%20Sul%20Shopping%20Aracaju" target="_blank" rel="noopener"><span class="pick-ico"><svg class="ic" aria-hidden="true"><use href="#i-cart"/></svg></span><span class="pick-txt"><b>Praia Sul Shopping</b><small>Ver no mapa</small></span><svg class="ic pick-go" aria-hidden="true"><use href="#i-nav"/></svg></a>
+            <a class="pick" href="https://www.google.com/maps/search/?api=1&query=Orlinha%20P%C3%B4r%20do%20Sol%20Aracaju" target="_blank" rel="noopener"><span class="pick-ico"><svg class="ic" aria-hidden="true"><use href="#i-sun"/></svg></span><span class="pick-txt"><b>Orlinha do Pôr do Sol</b><small>Ver no mapa</small></span><svg class="ic pick-go" aria-hidden="true"><use href="#i-nav"/></svg></a>
+            <a class="pick" href="https://www.google.com/maps/search/?api=1&query=Bar%20do%20Caranguejo%20Aracaju" target="_blank" rel="noopener"><span class="pick-ico"><svg class="ic" aria-hidden="true"><use href="#i-utensils"/></svg></span><span class="pick-txt"><b>Bar do Caranguejo</b><small>Ver no mapa</small></span><svg class="ic pick-go" aria-hidden="true"><use href="#i-nav"/></svg></a>
+            <a class="pick" href="https://www.google.com/maps/search/?api=1&query=Fara%C3%B3%20Orla%20Sul%20Aracaju" target="_blank" rel="noopener"><span class="pick-ico"><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg></span><span class="pick-txt"><b>Faraó (Orla Sul)</b><small>Ver no mapa</small></span><svg class="ic pick-go" aria-hidden="true"><use href="#i-nav"/></svg></a>
+        </div>
+        <p class="picks-more">E há muito mais para descobrir por perto. Use os atalhos abaixo para explorar a região.</p>
         <div class="grid">
-          <article class="card tip"><span class="ico-box coral"><svg class="ic" aria-hidden="true"><use href="#i-utensils"/></svg></span><h3>Onde comer</h3><p>Indicações de restaurantes e links de localização serão adicionados aqui.</p><span class="soon">Em breve</span></article>
-          <article class="card tip"><span class="ico-box"><svg class="ic" aria-hidden="true"><use href="#i-wave"/></svg></span><h3>Passeios</h3><p>Praias, atrações e experiências da região serão adicionadas aqui.</p><span class="soon">Em breve</span></article>
-          <article class="card tip"><span class="ico-box coral"><svg class="ic" aria-hidden="true"><use href="#i-cart"/></svg></span><h3>Serviços próximos</h3><p>Mercados, padarias, farmácias e postos próximos serão adicionados aqui.</p><span class="soon">Em breve</span></article>
+          <article class="card tip"><span class="ico-box coral"><svg class="ic" aria-hidden="true"><use href="#i-utensils"/></svg></span><h3>Onde comer</h3><p>Veja o que há por perto, a partir da casa.</p><div class="map-links"><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=restaurantes%20perto%20de%20Condom%C3%ADnio%20Viva%20Vida%20Avenida%20In%C3%A1cio%20Barbosa%2011650%20Aracaju" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg>Restaurantes</a><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=padarias%20e%20caf%C3%A9s%20perto%20de%20Condom%C3%ADnio%20Viva%20Vida%20Avenida%20In%C3%A1cio%20Barbosa%2011650%20Aracaju" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg>Padarias e cafés</a></div></article>
+          <article class="card tip"><span class="ico-box"><svg class="ic" aria-hidden="true"><use href="#i-wave"/></svg></span><h3>Passeios</h3><p>Praias e atrações para aproveitar a região.</p><div class="map-links"><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=praias%20perto%20de%20Condom%C3%ADnio%20Viva%20Vida%20Avenida%20In%C3%A1cio%20Barbosa%2011650%20Aracaju" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg>Praias</a><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=pontos%20tur%C3%ADsticos%20perto%20de%20Condom%C3%ADnio%20Viva%20Vida%20Avenida%20In%C3%A1cio%20Barbosa%2011650%20Aracaju" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg>Atrações</a></div></article>
+          <article class="card tip"><span class="ico-box coral"><svg class="ic" aria-hidden="true"><use href="#i-cart"/></svg></span><h3>Serviços próximos</h3><p>Para resolver o dia a dia sem complicação.</p><div class="map-links"><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=supermercados%20perto%20de%20Condom%C3%ADnio%20Viva%20Vida%20Avenida%20In%C3%A1cio%20Barbosa%2011650%20Aracaju" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg>Mercados</a><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=farm%C3%A1cias%20perto%20de%20Condom%C3%ADnio%20Viva%20Vida%20Avenida%20In%C3%A1cio%20Barbosa%2011650%20Aracaju" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg>Farmácias</a><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=postos%20de%20combust%C3%ADvel%20perto%20de%20Condom%C3%ADnio%20Viva%20Vida%20Avenida%20In%C3%A1cio%20Barbosa%2011650%20Aracaju" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg>Postos</a></div></article>
         </div>
+        <p class="tip-note"><svg class="ic" aria-hidden="true"><use href="#i-info"/></svg><span>Os atalhos abrem o Google Maps com buscas a partir do endereço da casa. Confira horários e avaliações antes de sair.</span></p>
       </section>
 
+      <!-- SUA OPINIÃO -->
+      <section id="voltar" class="reveal">
+        <div class="feedback">
+          <span class="kicker">Depois da estadia</span>
+          <h3>Como foi a sua experiência?</h3>
+          <p>Sua opinião ajuda o Recanto do Sossego a melhorar e ajuda outros viajantes a escolher bem. Toque nas estrelas e conte pelo WhatsApp.</p>
+          <div class="stars" id="stars" role="radiogroup" aria-label="Sua nota de 1 a 5"></div>
+          <div class="rate-label" id="rateLabel" aria-live="polite"></div>
+          <div class="cta-row">
+            <a class="btn btn-wa" id="fbBtn" href="#" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-chat"/></svg>Enviar meu feedback</a>
+            <a class="btn btn-light" id="backBtn" href="#" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-heart"/></svg>Quero voltar: consultar datas</a>
+          </div>
+          <p class="small">Se puder, deixe também sua avaliação na plataforma em que fez a reserva. Obrigado!</p>
+        </div>
+      </section>
       <!-- CONTATO -->
       <section id="contato" class="reveal">
         <div class="contact">
@@ -958,6 +1197,73 @@
       /* ---------- IMPRESSÃO: abre todos os acordeões ---------- */
       window.addEventListener('beforeprint',function(){ $$('details').forEach(function(d){ d.open=true }); });
     })();
+  </script>
+
+  <script>
+  (function(){
+    'use strict';
+    var $ = function(id){ return document.getElementById(id); };
+    var WA = (window.ACESSO && window.ACESSO.whatsapp) || "5534999792398";
+    function wa(t){ return "https://wa.me/" + String(WA).replace(/\D/g,"") + "?text=" + encodeURIComponent(t); }
+    function br(d){ var x = new Date(d.getTime() - 3*3600e3); return {y:x.getUTCFullYear(), m:x.getUTCMonth()+1, d:x.getUTCDate(), h:x.getUTCHours(), mi:x.getUTCMinutes()}; }
+    function p2(n){ return String(n).padStart(2,"0"); }
+    function nomeHospede(){ var n = (window.__acesso && window.__acesso.nome) || ""; try{ n = n || localStorage.getItem("recanto_nome") || ""; }catch(e){} return n; }
+
+    /* ---------- saudação + contagem do checkout ---------- */
+    function estadia(){
+      var now = br(new Date()), h = now.h, saud = h < 5 ? "Boa madrugada" : h < 12 ? "Bom dia" : h < 18 ? "Boa tarde" : "Boa noite";
+      var n = nomeHospede();
+      $("greet").textContent = saud + (n ? ", " + n : "") + "!";
+      var ex = window.__acesso && window.__acesso.expira, st = $("stay");
+      if(!ex){ st.classList.remove("on"); return; }
+      var e = br(ex), dias = Math.round((Date.UTC(e.y,e.m-1,e.d) - Date.UTC(now.y,now.m-1,now.d)) / 864e5);
+      var hora = p2(e.h) + "h" + (e.mi ? p2(e.mi) : "");
+      var main = dias <= 0 ? "Hoje é o dia do checkout" : dias === 1 ? "O checkout é amanhã" : "Faltam " + dias + " dias para o checkout";
+      st.classList.toggle("hoje", dias <= 0);
+      $("stayMain").textContent = main;
+      $("staySub").textContent = "Acesso ao guia válido até " + p2(e.d) + "/" + p2(e.m) + " às " + hora;
+      st.classList.add("on");
+    }
+    estadia(); document.addEventListener("acesso-liberado", estadia); setInterval(estadia, 60000);
+
+    /* ---------- QR do Wi-Fi (lê rede e senha da própria página) ---------- */
+    var wBtn = $("wifiQrBtn"), wBox = $("wifiQr"), wDone = false;
+    function esc(s){ return String(s).replace(/([\\;,:"])/g, "\\$1"); }
+    function drawWifi(){
+      var ssid = $("wifi-net").textContent.trim(), pass = $("wifi-pass").textContent.trim();
+      QR.draw($("wifiCanvas"), "WIFI:T:WPA;S:" + esc(ssid) + ";P:" + esc(pass) + ";;", 8); wDone = true;
+    }
+    if(wBtn && window.QR){
+      wBtn.addEventListener("click", function(){
+        var on = !wBox.classList.contains("on");
+        if(on && !wDone){ try{ drawWifi(); }catch(e){ return; } }
+        wBox.classList.toggle("on", on); wBtn.setAttribute("aria-expanded", String(on));
+      });
+    } else if(wBtn){ wBtn.style.display = "none"; }
+
+    /* ---------- estrelas + feedback pelo WhatsApp ---------- */
+    var labels = ["","Poxa, queremos melhorar","Pode melhorar","Foi bom","Muito bom!","Perfeito!"], nota = 0, wrap = $("stars");
+    for(var i = 1; i <= 5; i++){
+      (function(v){
+        var b = document.createElement("button"); b.type = "button"; b.className = "star";
+        b.setAttribute("role","radio"); b.setAttribute("aria-checked","false"); b.setAttribute("aria-label", v + (v > 1 ? " estrelas" : " estrela"));
+        b.innerHTML = '<svg class="ic" aria-hidden="true"><use href="#i-star"/></svg>';
+        b.addEventListener("click", function(){ nota = v; pintar(); });
+        wrap.appendChild(b);
+      })(i);
+    }
+    function pintar(){
+      Array.prototype.forEach.call(wrap.children, function(b, idx){ b.classList.toggle("on", idx < nota); b.setAttribute("aria-checked", String(idx + 1 === nota)); });
+      $("rateLabel").textContent = nota ? labels[nota] : "";
+      montar();
+    }
+    function montar(){
+      var n = nomeHospede(), est = nota ? ("Minha nota: " + nota + "/5 " + "★".repeat(nota) + "☆".repeat(5 - nota) + "\n") : "";
+      $("fbBtn").href = wa("Olá! Sou " + (n || "hóspede") + " e quero deixar meu feedback sobre a estadia no Recanto do Sossego.\n" + est + "Comentário: ");
+      $("backBtn").href = wa("Olá! Gostei do Recanto do Sossego e gostaria de consultar datas disponíveis para uma próxima estadia.");
+    }
+    montar(); document.addEventListener("acesso-liberado", montar);
+  })();
   </script>
 </body>
 </html>
