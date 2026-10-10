@@ -17,7 +17,7 @@
     baseUrl: "https://machadodm2.github.io/Check-in-Inteligente/",
     // Senha do anfitrião (protege o gerador). Deixe vazio na primeira vez: abra o gerador.html e siga a tela de configuração.
     pinSalt: "7f2caff9d9f0093f",
-    pinHash: "",
+    pinHash: "825bd63a0b5534f586a458c387845873ab4d1e8f2da718fb95742134d2745378",
     // Para cortar UM código antes da hora, cole-o aqui. Exemplo: ["261020K7F2X"]
     revogados: []
   };
