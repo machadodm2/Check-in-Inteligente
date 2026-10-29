@@ -615,7 +615,104 @@
       .lb-fig img{max-height:calc(100vh - 190px);max-height:calc(100dvh - 190px)}
     }
     @media print{body::before,body::after,footer:before,.lb{display:none!important}}
-  </style>
+  
+    /* =========================================================
+       PASSEIOS (Croa do Goré, Ilha dos Namorados, Praia do Saco, Lagoa dos Tambaquis, Xingó, Piranhas)
+    ========================================================= */
+    .pz-grp{margin:0 0 40px}
+    .pz-gh{display:flex;gap:14px;align-items:flex-start;margin:0 0 16px}
+    .pz-gi{flex:none;width:46px;height:46px;border-radius:14px;display:grid;place-items:center;font-size:1.35rem;color:#fff;background:linear-gradient(135deg,var(--ocean),#1a9a91);box-shadow:0 6px 14px rgba(13,107,103,.25)}
+    .pz-gi.coral{background:linear-gradient(135deg,var(--coral),#f4ad82);color:#3b1a0a;box-shadow:0 6px 14px rgba(232,136,90,.3)}
+    .pz-gh h3{margin:0 0 3px;font-family:var(--serif);font-size:clamp(1.25rem,2.8vw,1.6rem);line-height:1.15;letter-spacing:-.01em}
+    .pz-gh p{margin:0;color:var(--muted);max-width:700px}
+    .pz-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+    .pz-card{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-s);transition:transform .22s,box-shadow .22s}
+    .pz-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+    .pz-art{position:relative;display:flex;flex-wrap:wrap;align-content:flex-start;gap:8px;min-height:128px;padding:16px 16px 46px;color:#fff;overflow:hidden}
+    .pz-art:after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:30px;pointer-events:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 360 30' preserveAspectRatio='none'%3E%3Cpath fill='%23fff' d='M0,16 q45,-22 90,0 t90,0 t90,0 t90,0 V30 H0Z'/%3E%3C/svg%3E") repeat-x left bottom/360px 30px}
+    .pz-art .pz-bg{position:absolute;right:12px;top:8px;width:104px;height:104px;opacity:.2;stroke-width:1.2;pointer-events:none}
+    .pz-sea{background:linear-gradient(135deg,#0a514f,#178e86)}
+    .pz-isl{background:linear-gradient(135deg,#0d6b67,#52bdb0)}
+    .pz-sun{background:linear-gradient(135deg,#b4552a,#e8885a 62%,#f4b48a)}
+    .pz-lake{background:linear-gradient(135deg,#0b5d4f,#4fae86)}
+    .pz-tg{position:relative;z-index:1;display:inline-flex;align-items:center;gap:6px;font-size:.74rem;font-weight:800;letter-spacing:.02em;padding:5px 10px;border-radius:999px;background:rgba(6,35,34,.38);border:1px solid rgba(255,255,255,.3);color:#fff;-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+    .pz-tg .ic{font-size:.95rem}
+    .pz-body{display:flex;flex-direction:column;gap:10px;flex:1;padding:2px 20px 20px}
+    .pz-body h3{margin:0;font-family:var(--serif);font-size:1.35rem;line-height:1.15}
+    .pz-body p{margin:0;color:var(--muted)}
+    .pz-tip{display:flex;gap:9px;align-items:flex-start;background:#fff8f3;border-left:3px solid var(--coral);border-radius:0 12px 12px 0;padding:10px 12px;color:#654a3c;font-size:.9rem;line-height:1.5}
+    .pz-tip .ic{flex:none;color:var(--coral-d);margin-top:2px}
+    .pz-act{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:6px}
+    .pz-btn{display:inline-flex;align-items:center;gap:7px;min-height:42px;padding:9px 14px;border-radius:999px;text-decoration:none;font-weight:800;font-size:.88rem;line-height:1.2;color:var(--ocean-d);background:var(--ocean-l);border:1px solid #c3ddd9;transition:background .2s,transform .15s}
+    .pz-btn:hover{background:#d3ebe7;transform:translateY(-2px)}
+    .pz-btn:active{transform:scale(.97)}
+    .pz-btn .ic{color:var(--coral-d)}
+    .pz-btn.solid{background:var(--ocean);color:#fff;border-color:var(--ocean)}
+    .pz-btn.solid:hover{background:var(--ocean-d)}
+    .pz-btn.solid .ic{color:#ffd0b3}
+    .pz-link{display:inline-flex;align-items:center;gap:8px;margin-top:14px;font-weight:800;color:var(--ocean-d);text-decoration:none;min-height:44px}
+    .pz-link:hover{text-decoration:underline}
+    .pz-link .ic{color:var(--coral-d)}
+    /* ---- viagem ao sertão ---- */
+    .pz-cg{position:relative;overflow:hidden;border-radius:26px;color:#fff;padding:34px;box-shadow:var(--shadow);background:linear-gradient(150deg,#082b2a 0%,#0b3d3b 40%,#0d6b67 78%,#8e4520 135%)}
+    .pz-cg:before{content:"";position:absolute;right:-60px;top:-60px;width:230px;height:230px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#ffd9b8,var(--coral) 70%);opacity:.3;pointer-events:none}
+    .pz-cg>*{position:relative;z-index:1}
+    .pz-badge{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:999px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);font-weight:800;font-size:.82rem;letter-spacing:.03em}
+    .pz-cg h3{margin:14px 0 8px;font-family:var(--serif);font-size:clamp(1.55rem,3.6vw,2.2rem);line-height:1.1;letter-spacing:-.02em;max-width:760px}
+    .pz-cg .pz-lead{margin:0;color:#e4f6f3;max-width:720px}
+    .pz-steps{list-style:none;margin:24px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:14px;counter-reset:pz}
+    .pz-st{counter-increment:pz;position:relative;display:flex;flex-direction:column;gap:8px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);border-radius:18px;padding:18px 18px 16px;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+    .pz-st:before{content:counter(pz);position:absolute;top:-14px;left:16px;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-weight:900;font-size:.95rem;background:var(--coral);color:#3b1a0a;box-shadow:0 4px 10px rgba(0,0,0,.25)}
+    .pz-st .pz-sti{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;font-size:1.25rem;background:rgba(255,255,255,.14);color:#ffd9b8;margin-top:6px}
+    .pz-st h4{margin:0;font-size:1.08rem;line-height:1.25}
+    .pz-st p{margin:0;color:#dff2ef;font-size:.93rem;line-height:1.55}
+    .pz-st .pz-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:2px}
+    .pz-st .pz-tg{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.26);font-size:.7rem}
+    .pz-st .pz-btn{margin-top:auto;align-self:flex-start;background:rgba(255,255,255,.14);color:#fff;border-color:rgba(255,255,255,.34);min-height:40px;font-size:.84rem}
+    .pz-st .pz-btn:hover{background:rgba(255,255,255,.24)}
+    .pz-st .pz-btn .ic{color:#ffd0b3}
+    .pz-st .pz-bot{margin-top:auto;padding-top:6px}
+    .pz-story{display:flex;gap:16px;margin-top:22px;background:linear-gradient(160deg,#fbf6ed,#f6ecdc);color:var(--ink);border-left:5px solid var(--coral);border-radius:18px;padding:20px 22px;box-shadow:0 10px 26px rgba(0,0,0,.18)}
+    .pz-story .pz-sico{flex:none;width:46px;height:46px;border-radius:14px;display:grid;place-items:center;font-size:1.4rem;background:#fdeee5;color:var(--coral-d)}
+    .pz-story h4{margin:0 0 6px;font-family:var(--serif);font-size:1.25rem;line-height:1.2}
+    .pz-story p{margin:0;color:#4a4036}
+    .pz-story p+p{margin-top:8px}
+    .pz-story small{display:block;margin-top:8px;color:#7a6a58;font-size:.82rem}
+    .pz-cgfoot{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:20px}
+    .pz-cgfoot .pz-btn{background:rgba(255,255,255,.14);color:#fff;border-color:rgba(255,255,255,.34)}
+    .pz-cgfoot .pz-btn:hover{background:rgba(255,255,255,.24)}
+    .pz-cgfoot .pz-btn .ic{color:#ffd0b3}
+    .pz-cgfoot .pz-btn.solid{background:var(--coral);color:#3b1a0a;border-color:var(--coral)}
+    .pz-cgfoot .pz-btn.solid:hover{background:#f09a6f}
+    .pz-cgfoot .pz-btn.solid .ic{color:#3b1a0a}
+    .pz-cgtips{margin:16px 0 0;display:flex;gap:9px;align-items:flex-start;color:#d3ece8;font-size:.9rem}
+    .pz-cgtips .ic{flex:none;color:#ffd0b3;margin-top:3px}
+    .pz-note{margin:22px 0 0;color:var(--muted);font-size:.9rem;display:flex;gap:8px;align-items:flex-start}
+    .pz-note .ic{flex:none;margin-top:3px;color:var(--ocean)}
+    .pz-help{margin-top:22px;display:flex;flex-wrap:wrap;gap:14px 22px;align-items:center;justify-content:space-between;background:linear-gradient(160deg,var(--sand),#fbf6ed);border:1px solid var(--sand-d);border-radius:22px;padding:20px 24px;box-shadow:var(--shadow-s)}
+    .pz-help b{display:block;font-family:var(--serif);font-size:1.25rem;line-height:1.2}
+    .pz-help span{color:var(--muted)}
+    .pz-help .btn{margin:0}
+    @media(max-width:980px){.pz-steps{grid-template-columns:1fr;gap:22px}.pz-st{padding-top:20px}}
+    @media(max-width:780px){
+      .pz-cards{grid-template-columns:1fr}
+      .pz-cg{padding:26px 18px;border-radius:22px}
+      .pz-cg:before{width:150px;height:150px;right:-55px;top:-55px;opacity:.22}
+      .pz-body{padding:2px 16px 18px}
+      .pz-story{flex-direction:column;gap:10px;padding:18px 16px}
+      .pz-gh{gap:12px}
+      .pz-help{padding:18px}
+      .pz-help .btn{width:100%}
+      .pz-cgfoot .pz-btn{flex:1 1 100%;justify-content:center}
+    }
+    @media(hover:none){.pz-card:hover,.pz-btn:hover{transform:none}}
+    /* Dicas da região: nas larguras em que 3 colunas não cabem (tablet e notebook pequeno) usa 2 colunas, sem rolagem lateral */
+    @media(min-width:781px) and (max-width:927px),(min-width:981px) and (max-width:1227px){
+      #dicas .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      #dicas .grid>.card:last-child{grid-column:1/-1}
+      #dicas .grid>.card:last-child .spots{grid-template-columns:repeat(2,minmax(0,1fr))}
+    }
+    </style>
 </head>
 <body>
   <!-- TELA DE ACESSO -->
@@ -727,7 +824,15 @@
       <symbol id="i-qr" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zM20 14v1M14 20h1M17 20h4v1M20 17v-1"/></symbol>
       <symbol id="i-camera" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></symbol>
       <symbol id="i-cross" viewBox="0 0 24 24"><path d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6z"/></symbol>
-    </defs>
+          <symbol id="i-boat" viewBox="0 0 24 24"><path d="M3 17h18l-2.2 3.2a2 2 0 0 1-1.6.8H6.8a2 2 0 0 1-1.6-.8L3 17z"/><path d="M12 3v14"/><path d="M12 4l6 9h-6"/><path d="M12 8l-5 5h5"/></symbol>
+      <symbol id="i-bolt" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></symbol>
+      <symbol id="i-mountain" viewBox="0 0 24 24"><path d="M3 20l6-11 4 6 3-4 5 9z"/></symbol>
+      <symbol id="i-landmark" viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V11"/><path d="M19 21V11"/><path d="M9 21v-6h6v6"/><path d="M3 11l9-7 9 7"/></symbol>
+      <symbol id="i-palm" viewBox="0 0 24 24"><path d="M12 21v-9"/><path d="M12 12c-1-4-5-6-8-5 3 0 5 2 8 5z"/><path d="M12 12c1-4 5-6 8-5-3 0-5 2-8 5z"/><path d="M12 12c-3-1-6 1-7 4 2-2 4-3 7-4z"/><path d="M12 12c3-1 6 1 7 4-2-2-4-3-7-4z"/></symbol>
+      <symbol id="i-route" viewBox="0 0 24 24"><circle cx="6" cy="19" r="2"/><circle cx="18" cy="5" r="2"/><path d="M8 19h7a3 3 0 0 0 0-6H9a3 3 0 0 1 0-6h7"/></symbol>
+      <symbol id="i-fish" viewBox="0 0 24 24"><path d="M2 12c3-5 8-6 13-3l6-3v12l-6-3c-5 3-10 2-13-3z"/><circle cx="8" cy="11" r=".7"/></symbol>
+      <symbol id="i-hat" viewBox="0 0 24 24"><path d="M5 15c0-5 3-9 7-9s7 4 7 9"/><path d="M2 15c3 1.5 6 2 10 2s7-.5 10-2"/><path d="M8 11.5h8"/></symbol>
+      </defs>
   </svg>
 
   <a class="skip" href="#conteudo">Pular para o conteúdo</a>
@@ -789,7 +894,8 @@
       <ul class="nav-list">
         <li><a class="nav-link" data-sec="checkout" href="#checkout"><svg class="ic" aria-hidden="true"><use href="#i-logout"/></svg>Checkout</a></li>
         <li><a class="nav-link" data-sec="dicas" href="#dicas"><svg class="ic" aria-hidden="true"><use href="#i-compass"/></svg>Dicas da região</a></li>
-        <li><a class="nav-link" data-sec="voltar" href="#voltar"><svg class="ic" aria-hidden="true"><use href="#i-heart"/></svg>Sua opinião</a></li>
+        <li><a class="nav-link" data-sec="passeios" href="#passeios"><svg class="ic" aria-hidden="true"><use href="#i-boat"/></svg>Passeios</a></li>
+          <li><a class="nav-link" data-sec="voltar" href="#voltar"><svg class="ic" aria-hidden="true"><use href="#i-heart"/></svg>Sua opinião</a></li>
         <li><a class="nav-link" data-sec="contato" href="#contato"><svg class="ic" aria-hidden="true"><use href="#i-chat"/></svg>Contato</a></li>
       </ul>
     </nav>
@@ -937,6 +1043,129 @@
             <div class="notice"><svg class="ic" aria-hidden="true"><use href="#i-lock"/></svg><div><strong>Importante:</strong> por segurança, a localização exata da chave será enviada pelo WhatsApp somente ao responsável pela reserva, próximo ao horário do check-in.</div></div>
           </div>
           <div class="placeholder"><svg class="ic" aria-hidden="true"><use href="#i-video"/></svg><span class="soon">Em breve</span><b>Vídeo de acesso</b>Um vídeo do percurso interno poderá ser disponibilizado aqui para facilitar sua chegada. O local da chave continuará sendo informado somente pelo WhatsApp.</div>
+        <!-- ===== COMO ESTACIONAR NA GARAGEM DO FUNDO (bloco novo) =====
+             Cole logo DEPOIS da linha que contém "Vídeo de acesso" (o quadro "Em breve" da seção Check-in).
+             Arquivos usados (mesma pasta do index.html): Video_manobra.mp4 e foto-garagem-limite.jpg -->
+        <style>
+          /* encaixe na grade do Check-in: o cartão fica na coluna da direita, logo abaixo do quadro de vídeo */
+          #checkin .feature>.panel{grid-row:1 / span 2}
+          #checkin .feature>.placeholder{grid-column:2;grid-row:1}
+          #checkin .feature>.park{grid-column:2;grid-row:2}
+          /* o painel de passos acompanha a rolagem enquanto o cartão da direita é lido (evita um vazio à esquerda) */
+          @media(min-width:781px){#checkin .feature>.panel{position:sticky;top:24px}}
+          @media(min-width:781px) and (max-width:980px){#checkin .feature>.panel{top:84px}}
+          @media(max-width:780px){
+            #checkin .feature>.panel{grid-row:auto}
+            #checkin .feature>.placeholder,#checkin .feature>.park{grid-column:auto;grid-row:auto}
+          }
+          .park{scroll-margin-top:28px;background:#fff;border:1px solid #dce7e5;border-radius:20px;padding:22px;box-shadow:0 6px 18px rgba(19,71,70,.07)}
+          .park:focus{outline:none}
+          .park svg.ic{width:1.15em;height:1.15em;flex:none;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;vertical-align:-.18em}
+          .park-head{display:flex;gap:14px;align-items:center;margin-bottom:10px}
+          .park-badge{flex:none;width:46px;height:46px;border-radius:14px;display:grid;place-items:center;font-size:1.4rem;color:#fff;background:linear-gradient(135deg,#0d6b67,#1a9a91);box-shadow:0 6px 14px rgba(13,107,103,.25)}
+          .park-kicker{display:block;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;font-weight:850;color:#0d6b67}
+          .park-head h3{margin:2px 0 0;font-family:Georgia,"Times New Roman",serif;font-size:1.3rem;line-height:1.15;color:#173133}
+          .park-lead{margin:0 0 14px;color:#566b6c}
+          .park-video{position:relative;border-radius:16px;overflow:hidden;background:linear-gradient(135deg,#0a514f,#178e86)}
+          .park-play{display:flex;align-items:center;gap:14px;width:100%;min-height:68px;padding:12px 16px;border:0;background:none;color:#fff;font:inherit;text-align:left;cursor:pointer}
+          .park-play:hover{background:rgba(255,255,255,.08)}
+          .park-play:focus-visible{outline:3px solid #e8885a;outline-offset:-3px}
+          .park-play .ic{width:2.2rem;height:2.2rem;stroke-width:1.8;color:#ffd0b3}
+          .park-play b{display:block;font-size:1.02rem;line-height:1.2}
+          .park-play small{display:block;font-size:.82rem;color:#d3efec;margin-top:2px}
+          .park-video.on{background:#000;aspect-ratio:16/9}
+          .park-video.on.portrait{aspect-ratio:3/4;max-height:min(78vh,560px)}
+          .park-video video{display:block;width:100%;height:100%;object-fit:contain;background:#000}
+          .park-fail{margin:10px 0 0;padding:10px 14px;border-radius:12px;background:#fff3e8;color:#6b3a1a;font-size:.9rem;font-weight:650}
+          .park-list{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:12px}
+          .park-item{display:flex;gap:12px;border-left:4px solid #e8885a;background:#fff8f3;border-radius:0 14px 14px 0;padding:14px 14px 14px 12px}
+          .park-ico{flex:none;width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:#fdeee5;color:#c4612f;font-size:1.2rem}
+          .park-txt{min-width:0}
+          .park-tag{display:inline-block;margin-bottom:5px;font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;font-weight:900;border-radius:999px;padding:3px 10px;background:#a8501f;color:#fff}
+          .park-txt b{display:block;font-size:1rem;line-height:1.25;color:#173133}
+          .park-txt p{margin:4px 0 0;color:#654a3c;font-size:.93rem;line-height:1.5}
+          .park-photo{display:inline-flex;align-items:center;gap:8px;margin-top:10px;min-height:42px;padding:8px 14px;border:1px solid #e3b79c;border-radius:999px;background:#fff;color:#8a4018;font:inherit;font-size:.88rem;font-weight:800;cursor:pointer}
+          .park-photo:hover{background:#fdeee5}
+          .park-foot{margin:14px 0 0;color:#566b6c;font-size:.9rem}
+          .park-foot a{color:#0a514f;font-weight:800}
+          .park-dlg{width:min(900px,94vw);max-height:92vh;padding:0;border:0;border-radius:18px;background:#fff;overflow:hidden;box-shadow:0 24px 70px rgba(0,0,0,.5)}
+          .park-dlg::backdrop{background:rgba(4,22,21,.82)}
+          .park-dlg img{display:block;width:100%;height:auto;max-height:78vh;object-fit:contain;background:#000}
+          .park-dlg p{margin:0;padding:12px 56px 14px 16px;color:#173133;font-weight:700;font-size:.95rem}
+          .park-x{position:absolute;top:10px;right:10px;width:44px;height:44px;border:0;border-radius:50%;background:rgba(0,0,0,.55);color:#fff;font-size:1.6rem;line-height:1;cursor:pointer}
+          @media(max-width:980px){.park{scroll-margin-top:78px}}
+          @media(max-width:780px){.park{padding:18px 14px}.park-head h3{font-size:1.2rem}}
+          @media print{.park-video,.park-photo{display:none!important}}
+        </style>
+        <div class="park" id="garagem-fundo" tabindex="-1">
+          <div class="park-head">
+            <span class="park-badge"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 17H3v-5l2-5h14l2 5v5h-2"/><path d="M3 12h18"/><circle cx="7.5" cy="17" r="2"/><circle cx="16.5" cy="17" r="2"/><path d="M9.5 17h5"/></svg></span>
+            <div>
+              <span class="park-kicker">Estacionamento</span>
+              <h3>Como estacionar na garagem do fundo</h3>
+            </div>
+          </div>
+          <p class="park-lead">A casa tem duas garagens. Assista ao vídeo rápido e confira dois cuidados que facilitam a manobra.</p>
+          <div class="park-video" id="parkVideo">
+            <button class="park-play" type="button" id="parkPlay" aria-label="Assistir ao vídeo: como estacionar na garagem do fundo">
+              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+              <span><b>Assistir ao vídeo</b><small>Como estacionar na garagem do fundo</small></span>
+            </button>
+          </div>
+          <p class="park-fail" id="parkFail" role="status" hidden>Não conseguimos abrir o vídeo agora. Se precisar, fale com o anfitrião pelo WhatsApp.</p>
+          <ul class="park-list">
+            <li class="park-item">
+              <span class="park-ico"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span>
+              <div class="park-txt">
+                <span class="park-tag">Atenção</span>
+                <b>Pilastra na lateral da entrada</b>
+                <p>Ela é baixa e costuma passar despercebida de dentro do carro, principalmente na primeira manobra. Entre devagar e, se puder, peça para alguém orientar de fora.</p>
+              </div>
+            </li>
+            <li class="park-item">
+              <span class="park-ico"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h13"/><path d="M12 7l5 5-5 5"/><path d="M21 4v16"/></svg></span>
+              <div class="park-txt">
+                <span class="park-tag">Atenção</span>
+                <b>Traseira toda dentro da garagem</b>
+                <p>Depois de estacionar, a traseira do carro não pode sobrar para a rua: mantenha-a antes da linha marcada pela seta verde, para não bloquear a passagem de vizinhos e de outros veículos.</p>
+                <button class="park-photo" type="button" id="parkPhotoBtn"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>Ver foto do limite</button>
+              </div>
+            </li>
+          </ul>
+          <p class="park-foot">Ficou com dúvida na manobra, ou houve algum toque na pilastra? <a href="https://wa.me/5534999792398?text=Ol%C3%A1!%20Tenho%20uma%20d%C3%BAvida%20sobre%20a%20garagem%20do%20Recanto%20do%20Sossego." target="_blank" rel="noopener">Avise pelo WhatsApp</a>.</p>
+          <dialog class="park-dlg" id="parkDlg" aria-label="Foto: limite da traseira do carro">
+            <button class="park-x" type="button" id="parkDlgX" aria-label="Fechar foto">&times;</button>
+            <img src="foto-garagem-limite.jpg" alt="Entrada da garagem vista da rua, com uma seta verde indicando o limite do meio-fio que a traseira do carro não deve ultrapassar" width="1200" height="611" loading="lazy" decoding="async">
+            <p>A seta verde marca o limite: o carro fica todo dentro da garagem.</p>
+          </dialog>
+        </div>
+        <script>
+          (function(){
+            var box=document.getElementById('parkVideo'), btn=document.getElementById('parkPlay'), fail=document.getElementById('parkFail');
+            if(box && btn){
+              btn.addEventListener('click',function(){
+                var v=document.createElement('video'), s=document.createElement('source');
+                v.controls=true; v.preload='auto'; v.setAttribute('playsinline',''); v.setAttribute('aria-label','Vídeo: como estacionar na garagem do fundo');
+                s.src='Video_manobra.mp4'; s.type='video/mp4'; v.appendChild(s);
+                function falhou(){ box.classList.remove('on','portrait'); box.innerHTML=''; box.appendChild(btn); fail.hidden=false; }
+                s.addEventListener('error',falhou); v.addEventListener('error',falhou);
+                v.addEventListener('loadedmetadata',function(){ if(v.videoHeight>v.videoWidth) box.classList.add('portrait'); });
+                fail.hidden=true; box.innerHTML=''; box.classList.add('on'); box.appendChild(v);
+                var p=v.play(); if(p && p.catch) p.catch(function(){});
+              });
+            }
+            var dlg=document.getElementById('parkDlg'), pb=document.getElementById('parkPhotoBtn'), px=document.getElementById('parkDlgX');
+            if(dlg && pb){
+              pb.addEventListener('click',function(){
+                if(typeof dlg.showModal==='function') dlg.showModal(); else window.open('foto-garagem-limite.jpg','_blank','noopener');
+              });
+              if(px) px.addEventListener('click',function(){ dlg.close(); });
+              dlg.addEventListener('click',function(e){ if(e.target===dlg) dlg.close(); });
+            }
+          })();
+        </script>
+        <!-- ===== FIM DO BLOCO ===== -->
+
         </div>
       </section>
 
@@ -1013,6 +1242,63 @@
           <div class="rule-chip"><svg class="ic" aria-hidden="true"><use href="#i-moon"/></svg>Silêncio das 23h às 8h</div>
         </div>
 
+        <!-- ===== REGRAS DO CONDOMÍNIO (bloco novo: cole logo antes de <details id="regras-convivencia" open>) ===== -->
+        <style>
+          .rc{scroll-margin-top:28px;margin:0 0 20px;padding:22px;border:1px solid #f0d3bf;border-radius:20px;background:linear-gradient(160deg,#fffaf5,#fff4ea);box-shadow:0 6px 18px rgba(19,71,70,.07)}
+          .rc:focus{outline:none}
+          .rc-head{display:flex;gap:14px;align-items:flex-start;margin-bottom:16px}
+          .rc-badge{flex:none;width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:#e8885a;color:#3b1a0a;font-size:1.4rem}
+          .rc-kicker{display:block;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;font-weight:850;color:#c4612f;margin-bottom:2px}
+          .rc-head h3{margin:0 0 6px;font-family:Georgia,"Times New Roman",serif;font-size:clamp(1.3rem,3vw,1.7rem);line-height:1.15;color:#173133}
+          .rc-head p{margin:0;color:#654a3c}
+          .rc-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+          .rc-item{display:flex;gap:14px;background:#fff;border:1px solid #f0d3bf;border-left:4px solid #e8885a;border-radius:14px;padding:16px 16px 16px 14px}
+          .rc-ico{flex:none;width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:#fdeee5;color:#c4612f;font-size:1.3rem}
+          .rc-txt{min-width:0}
+          .rc-tag{display:inline-block;margin-bottom:6px;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;font-weight:900;border-radius:999px;padding:3px 10px;background:#a8501f;color:#fff}
+          .rc-tag.ok{background:#0a514f}
+          .rc-txt b{display:block;font-size:1.02rem;line-height:1.25;color:#173133}
+          .rc-txt p{margin:4px 0 0;color:#566b6c;font-size:.94rem;line-height:1.5}
+          .rc-cam{grid-column:1/-1;border-left-color:#0d6b67;background:#f1f8f7;border-color:#c3ddd9}
+          .rc-cam .rc-ico{background:#e4f2f0;color:#0a514f}
+          .rc-foot{margin:14px 0 0;color:#654a3c;font-size:.92rem}
+          @media(max-width:980px){.rc{scroll-margin-top:78px}}
+          @media(max-width:780px){.rc{padding:18px 14px}.rc-list{grid-template-columns:1fr}.rc-head{gap:12px}}
+        </style>
+        <div class="rc" id="regras-condominio" tabindex="-1">
+          <div class="rc-head">
+            <span class="rc-badge"><svg class="ic" aria-hidden="true"><use href="#i-shield"/></svg></span>
+            <div>
+              <span class="rc-kicker">Leia com atenção</span>
+              <h3>Regras do condomínio</h3>
+              <p>Como o condomínio tem conceito aberto, os lotes das casas ficam à vista, mas cada um continua sendo propriedade privada de seus moradores. Por isso, estas regras são muito importantes.</p>
+            </div>
+          </div>
+          <ul class="rc-list">
+            <li class="rc-item">
+              <span class="rc-ico"><svg class="ic" aria-hidden="true"><use href="#i-home"/></svg></span>
+              <div class="rc-txt"><span class="rc-tag">Proibido</span><b>Não circule pelos lotes das outras casas</b><p>É expressamente proibido andar em cima dos lotes e dos espaços das outras casas do condomínio. Circule apenas pelas vias e pelas áreas comuns.</p></div>
+            </li>
+            <li class="rc-item">
+              <span class="rc-ico"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 7c-3-2-7 0-7 5 0 4 3 8 5 8 1 0 1.5-.5 2-.5s1 .5 2 .5c2 0 5-4 5-8 0-5-4-7-7-5z"/><path d="M12 7c0-2 1-4 3-5"/></svg></span>
+              <div class="rc-txt"><span class="rc-tag">Proibido</span><b>Não pegue frutas das outras casas</b><p>É proibido colher frutas das árvores e dos pomares das outras casas. Em caso de dúvida sobre o que pode ser colhido na nossa casa, pergunte ao anfitrião.</p></div>
+            </li>
+            <li class="rc-item">
+              <span class="rc-ico"><svg class="ic" aria-hidden="true"><use href="#i-wine"/></svg></span>
+              <div class="rc-txt"><span class="rc-tag">Proibido</span><b>Piscina: sem copos e sem bebidas</b><p>Na área da piscina não é permitido entrar com copos nem com bebidas de qualquer espécie.</p></div>
+            </li>
+            <li class="rc-item">
+              <span class="rc-ico"><svg class="ic" aria-hidden="true"><use href="#i-car"/></svg></span>
+              <div class="rc-txt"><span class="rc-tag ok">Obrigatório</span><b>Carros somente nas garagens</b><p>Os veículos devem permanecer sempre nas áreas de garagem.</p></div>
+            </li>
+            <li class="rc-item rc-cam">
+              <span class="rc-ico"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></span>
+              <div class="rc-txt"><span class="rc-tag ok">Importante</span><b>Condomínio monitorado por câmeras</b><p>Todo o condomínio é monitorado por câmeras, ao longo de todos os seus espaços internos. Por isso, pegar frutas dos vizinhos ou descumprir qualquer uma das regras acima não passa despercebido.</p></div>
+            </li>
+          </ul>
+          <p class="rc-foot">Agradecemos a sua colaboração: ela mantém o condomínio agradável e seguro para você e para os moradores.</p>
+        </div>
+        <!-- ===== FIM DO BLOCO ===== -->
         <details id="regras-convivencia" open>
           <summary><span class="s-ico"><svg class="ic" aria-hidden="true"><use href="#i-shield"/></svg></span>Convivência e segurança<svg class="ic chev" aria-hidden="true"><use href="#i-chev"/></svg></summary>
           <div class="details-body"><ul>
@@ -1084,12 +1370,69 @@
         <p class="picks-more">E há muito mais para descobrir por perto. Use os atalhos abaixo para explorar a região.</p>
         <div class="grid">
           <article class="card tip"><span class="ico-box coral"><svg class="ic" aria-hidden="true"><use href="#i-utensils"/></svg></span><h3>Onde comer</h3><p>Veja o que há por perto, a partir da casa.</p><p class="tip-sub">Indicado pelo anfitrião</p><div class="spots"><a class="spot" href="https://www.google.com/maps/search/?api=1&query=Buda%20Restaurante%2C%20Rod.%20dos%20N%C3%A1ufragos%2C%2077%20-%20Mosqueiro%2C%20Aracaju%20-%20SE" target="_blank" rel="noopener"><span class="spot-ico"><svg class="ic" aria-hidden="true"><use href="#i-utensils"/></svg></span><span class="spot-txt"><b>Buda Restaurante</b><small>Rod. dos Náufragos, 77 • Mosqueiro</small></span><svg class="ic spot-go" aria-hidden="true"><use href="#i-nav"/></svg></a></div><p class="tip-sub">Buscar por perto</p><div class="map-links"><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=restaurantes%20perto%20de%20Condom%C3%ADnio%20Viva%20Vida%20Avenida%20In%C3%A1cio%20Barbosa%2011650%20Aracaju" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg>Restaurantes</a><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=padarias%20e%20caf%C3%A9s%20perto%20de%20Condom%C3%ADnio%20Viva%20Vida%20Avenida%20In%C3%A1cio%20Barbosa%2011650%20Aracaju" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg>Padarias e cafés</a></div></article>
-          <article class="card tip"><span class="ico-box"><svg class="ic" aria-hidden="true"><use href="#i-wave"/></svg></span><h3>Passeios</h3><p>Praias e atrações para aproveitar a região.</p><div class="map-links"><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=praias%20perto%20de%20Condom%C3%ADnio%20Viva%20Vida%20Avenida%20In%C3%A1cio%20Barbosa%2011650%20Aracaju" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg>Praias</a><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=pontos%20tur%C3%ADsticos%20perto%20de%20Condom%C3%ADnio%20Viva%20Vida%20Avenida%20In%C3%A1cio%20Barbosa%2011650%20Aracaju" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg>Atrações</a></div></article>
+          <article class="card tip"><span class="ico-box"><svg class="ic" aria-hidden="true"><use href="#i-wave"/></svg></span><h3>Passeios</h3><p>Praias e atrações para aproveitar a região.</p><p class="tip-sub">Selecionados pelo anfitrião</p><div class="spots"><a class="spot" href="#passeios"><span class="spot-ico"><svg class="ic" aria-hidden="true"><use href="#i-boat"/></svg></span><span class="spot-txt"><b>Ver passeios selecionados</b><small>Croa do Goré, Praia do Saco, Xingó e mais</small></span><svg class="ic spot-go" aria-hidden="true"><use href="#i-nav"/></svg></a></div><p class="tip-sub">Buscar por perto</p><div class="map-links"><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=praias%20perto%20de%20Condom%C3%ADnio%20Viva%20Vida%20Avenida%20In%C3%A1cio%20Barbosa%2011650%20Aracaju" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg>Praias</a><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=pontos%20tur%C3%ADsticos%20perto%20de%20Condom%C3%ADnio%20Viva%20Vida%20Avenida%20In%C3%A1cio%20Barbosa%2011650%20Aracaju" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg>Atrações</a></div></article>
           <article class="card tip"><span class="ico-box coral"><svg class="ic" aria-hidden="true"><use href="#i-cart"/></svg></span><h3>Serviços próximos</h3><p>Para resolver o dia a dia sem complicação.</p><p class="tip-sub">Indicados pelo anfitrião</p><div class="spots"><a class="spot" href="https://www.google.com/maps/search/?api=1&query=Farm%C3%A1cia%20da%20Praia%2C%20Av.%20Dr.%20Jos%C3%A9%20Domingos%20Maia%2C%201363%20-%20Mosqueiro%2C%20Aracaju%20-%20SE%2C%2049009-010" target="_blank" rel="noopener"><span class="spot-ico"><svg class="ic" aria-hidden="true"><use href="#i-cross"/></svg></span><span class="spot-txt"><b>Farmácia da Praia</b><small>Av. Dr. José Domingos Maia, 1363 • Mosqueiro</small></span><svg class="ic spot-go" aria-hidden="true"><use href="#i-nav"/></svg></a><a class="spot" href="https://www.google.com/maps/search/?api=1&query=Supermercado%20Passeo%2C%20Av.%20Dr.%20Jos%C3%A9%20Domingos%20Maia%2C%2010%20-%20Mosqueiro%2C%20Aracaju%20-%20SE%2C%2049009-010" target="_blank" rel="noopener"><span class="spot-ico"><svg class="ic" aria-hidden="true"><use href="#i-cart"/></svg></span><span class="spot-txt"><b>Supermercado Passeo</b><small>Av. Dr. José Domingos Maia, 10 • Mosqueiro</small></span><svg class="ic spot-go" aria-hidden="true"><use href="#i-nav"/></svg></a></div><p class="tip-sub">Buscar por perto</p><div class="map-links"><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=supermercados%20perto%20de%20Condom%C3%ADnio%20Viva%20Vida%20Avenida%20In%C3%A1cio%20Barbosa%2011650%20Aracaju" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg>Mercados</a><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=farm%C3%A1cias%20perto%20de%20Condom%C3%ADnio%20Viva%20Vida%20Avenida%20In%C3%A1cio%20Barbosa%2011650%20Aracaju" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg>Farmácias</a><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=postos%20de%20combust%C3%ADvel%20perto%20de%20Condom%C3%ADnio%20Viva%20Vida%20Avenida%20In%C3%A1cio%20Barbosa%2011650%20Aracaju" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg>Postos</a></div></article>
         </div>
         <p class="tip-note"><svg class="ic" aria-hidden="true"><use href="#i-info"/></svg><span>Os atalhos abrem o Google Maps com buscas a partir do endereço da casa. Confira horários e avaliações antes de sair.</span></p>
       </section>
 
+      <!-- PASSEIOS -->
+      <section id="passeios" class="reveal">
+        <div class="section-head">
+          <span class="sec-ico"><svg class="ic" aria-hidden="true"><use href="#i-boat"/></svg></span>
+          <span class="kicker">Para ir além da praia</span>
+          <h2>Passeios em Aracaju e região</h2>
+          <p>Separamos passeios para todos os gostos: rio e mar bem pertinho da casa, um dia de praia e lagoa no litoral sul e uma viagem pelo sertão, com cânions, uma grande hidrelétrica e um capítulo marcante da história do Nordeste.</p>
+        </div>
+          <div class="pz-grp"><div class="pz-gh"><span class="pz-gi"><svg class="ic" aria-hidden="true"><use href="#i-boat"/></svg></span><div><h3>Pertinho da casa, de barco</h3><p>Os barcos costumam sair da Orla Pôr do Sol, no povoado Mosqueiro, a mesma região da casa. A maioria dos roteiros junta as duas paradas.</p></div></div>
+          <div class="pz-cards">
+            <article class="pz-card"><div class="pz-art pz-sea" aria-hidden="false"><svg class="ic pz-bg" aria-hidden="true"><use href="#i-wave"/></svg><span class="pz-tg"><svg class="ic" aria-hidden="true"><use href="#i-boat"/></svg>Passeio de barco</span><span class="pz-tg"><svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg>Maré baixa</span></div><div class="pz-body"><h3>Croa do Goré</h3><p>Um banco de areia que surge no meio do Rio Vaza-Barris quando a maré baixa: água rasa e morna, guarda-sóis e bar flutuante para curtir com os pés na água.</p><p class="pz-tip"><svg class="ic" aria-hidden="true"><use href="#i-bulb"/></svg><span><strong>Dica:</strong> a croa só aparece na maré baixa. Confira a tábua de marés ou pergunte à operadora qual é o melhor horário do dia.</span></p><div class="pz-act"><a class="pz-btn solid" href="https://www.google.com/maps/search/?api=1&query=Croa%20do%20Gor%C3%A9%2C%20Aracaju%20-%20SE" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg>Ver no mapa</a><a class="pz-btn" href="https://www.google.com/search?q=passeio+Croa+do+Gor%C3%A9+Aracaju" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-compass"/></svg>Buscar passeios</a></div></div></article>
+            <article class="pz-card"><div class="pz-art pz-isl" aria-hidden="false"><svg class="ic pz-bg" aria-hidden="true"><use href="#i-palm"/></svg><span class="pz-tg"><svg class="ic" aria-hidden="true"><use href="#i-boat"/></svg>Passeio de barco</span><span class="pz-tg"><svg class="ic" aria-hidden="true"><use href="#i-sun"/></svg>Foz do rio</span></div><div class="pz-body"><h3>Ilha dos Namorados</h3><p>Uma ilha de mangue e coqueiros na foz do Vaza-Barris, entre o rio e o mar, com águas calmas, quiosques e áreas de sombra. Boa parada para almoçar com calma.</p><p class="pz-tip"><svg class="ic" aria-hidden="true"><use href="#i-bulb"/></svg><span><strong>Dica:</strong> quase sempre ela entra no mesmo roteiro da Croa do Goré (cerca de 5 a 6 horas no total). Confira o que está incluso e o tempo de cada parada.</span></p><div class="pz-act"><a class="pz-btn solid" href="https://www.google.com/maps/search/?api=1&query=Ilha%20dos%20Namorados%2C%20Aracaju%20-%20SE" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg>Ver no mapa</a><a class="pz-btn" href="https://www.google.com/search?q=passeio+Croa+do+Gor%C3%A9+e+Ilha+dos+Namorados+Aracaju" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-compass"/></svg>Buscar passeios</a></div></div></article>
+          </div>
+          <a class="pz-link" href="https://www.google.com/maps/dir/?api=1&origin=Condom%C3%ADnio%20Viva%20Vida%2C%20Avenida%20In%C3%A1cio%20Barbosa%2011650%2C%20Aracaju%20-%20SE&destination=Orla%20P%C3%B4r%20do%20Sol%2C%20Mosqueiro%2C%20Aracaju%20-%20SE&travelmode=driving" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-route"/></svg>Como chegar à Orla Pôr do Sol a partir da casa</a></div>
+          <div class="pz-grp"><div class="pz-gh"><span class="pz-gi coral"><svg class="ic" aria-hidden="true"><use href="#i-palm"/></svg></span><div><h3>Litoral sul: um dia de praia e lagoa</h3><p>As duas ficam em Estância e combinam bem no mesmo dia: a lagoa fica no caminho da praia.</p></div></div>
+          <div class="pz-cards">
+            <article class="pz-card"><div class="pz-art pz-sun" aria-hidden="false"><svg class="ic pz-bg" aria-hidden="true"><use href="#i-sun"/></svg><span class="pz-tg"><svg class="ic" aria-hidden="true"><use href="#i-car"/></svg>Bate-volta</span><span class="pz-tg"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg>≈ 70 km de Aracaju</span></div><div class="pz-body"><h3>Praia do Saco</h3><p>No extremo sul de Sergipe, quase na divisa com a Bahia: mar calmo, coqueirais e dunas. De lá saem passeios de lancha até bancos de areia e a travessia para Mangue Seco (BA).</p><p class="pz-tip"><svg class="ic" aria-hidden="true"><use href="#i-bulb"/></svg><span><strong>Dica:</strong> são cerca de 1 hora a 1h30 de carro. Leve dinheiro em espécie, porque nem todas as barracas aceitam cartão.</span></p><div class="pz-act"><a class="pz-btn solid" href="https://www.google.com/maps/search/?api=1&query=Praia%20do%20Saco%2C%20Est%C3%A2ncia%20-%20SE" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg>Ver no mapa</a><a class="pz-btn" href="https://www.google.com/maps/dir/?api=1&origin=Condom%C3%ADnio%20Viva%20Vida%2C%20Avenida%20In%C3%A1cio%20Barbosa%2011650%2C%20Aracaju%20-%20SE&destination=Praia%20do%20Saco%2C%20Est%C3%A2ncia%20-%20SE&travelmode=driving" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-route"/></svg>Como chegar da casa</a></div></div></article>
+            <article class="pz-card"><div class="pz-art pz-lake" aria-hidden="false"><svg class="ic pz-bg" aria-hidden="true"><use href="#i-fish"/></svg><span class="pz-tg"><svg class="ic" aria-hidden="true"><use href="#i-car"/></svg>Bate-volta</span><span class="pz-tg"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg>≈ 58 km de Aracaju</span></div><div class="pz-body"><h3>Lagoa dos Tambaquis</h3><p>Uma lagoa onde dá para nadar entre tambaquis dóceis, com restaurantes, piscinas, toboáguas e stand up paddle ao redor. A água é rasa e o programa agrada a crianças e adultos.</p><p class="pz-tip"><svg class="ic" aria-hidden="true"><use href="#i-bulb"/></svg><span><strong>Dica:</strong> cada estabelecimento tem regras, horários e valores próprios (alguns cobram entrada ou day use). Confirme antes de escolher onde ficar.</span></p><div class="pz-act"><a class="pz-btn solid" href="https://www.google.com/maps/search/?api=1&query=Lagoa%20dos%20Tambaquis%2C%20Est%C3%A2ncia%20-%20SE" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg>Ver no mapa</a><a class="pz-btn" href="https://www.google.com/maps/dir/?api=1&origin=Condom%C3%ADnio%20Viva%20Vida%2C%20Avenida%20In%C3%A1cio%20Barbosa%2011650%2C%20Aracaju%20-%20SE&destination=Lagoa%20dos%20Tambaquis%2C%20Est%C3%A2ncia%20-%20SE&travelmode=driving" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-route"/></svg>Como chegar da casa</a></div></div></article>
+          </div></div>
+          <div class="pz-grp"><div class="pz-cg">
+            <span class="pz-badge"><svg class="ic" aria-hidden="true"><use href="#i-route"/></svg> Dia inteiro • Sergipe e Alagoas</span>
+            <h3>Xingó, Piranhas e a Rota do Cangaço</h3>
+            <p class="pz-lead">São cerca de 200 km de Aracaju (3h30 a 4h de estrada) até um dos cenários mais impressionantes do Nordeste: cânions navegáveis, uma das maiores hidrelétricas do país e o lugar onde terminou a história de Lampião e Maria Bonita.</p>
+            <ol class="pz-steps">
+              <li class="pz-st"><span class="pz-sti"><svg class="ic" aria-hidden="true"><use href="#i-mountain"/></svg></span><h4>Cânions do Xingó</h4>
+                <p>Passeio de catamarã pelo Rio São Francisco, entre paredões de rocha de até 50 metros e águas verde-esmeralda. Dura cerca de 3 horas, com parada para banho no Paraíso do Talhado e canoa opcional até a Gruta do Talhado.</p>
+                <div class="pz-chips"><span class="pz-tg"><svg class="ic" aria-hidden="true"><use href="#i-boat"/></svg>Catamarã</span><span class="pz-tg"><svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg>≈ 3 h</span></div>
+                <a class="pz-btn" href="https://www.google.com/maps/search/?api=1&query=C%C3%A2nions%20do%20Xing%C3%B3%2C%20Canind%C3%A9%20de%20S%C3%A3o%20Francisco%20-%20SE" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg>Ver no mapa</a></li>
+              <li class="pz-st"><span class="pz-sti"><svg class="ic" aria-hidden="true"><use href="#i-bolt"/></svg></span><h4>Usina Hidrelétrica de Xingó</h4>
+                <p>A grande obra de engenharia que represou o Velho Chico em 1994 e deu origem aos cânions navegáveis. A visita guiada dura cerca de 1 hora e precisa ser agendada. É obrigatório usar calçado fechado e calça comprida.</p>
+                <div class="pz-chips"><span class="pz-tg"><svg class="ic" aria-hidden="true"><use href="#i-clock"/></svg>≈ 1 h</span><span class="pz-tg"><svg class="ic" aria-hidden="true"><use href="#i-info"/></svg>Agendar antes</span></div>
+                <a class="pz-btn" href="https://www.google.com/maps/search/?api=1&query=Usina%20Hidrel%C3%A9trica%20de%20Xing%C3%B3%2C%20Piranhas%20-%20AL" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg>Ver no mapa</a></li>
+              <li class="pz-st"><span class="pz-sti"><svg class="ic" aria-hidden="true"><use href="#i-landmark"/></svg></span><h4>Piranhas (AL) e a Rota do Cangaço</h4>
+                <p>Cidade histórica às margens do São Francisco, com centro histórico tombado pelo IPHAN. De lá sai o barco da Rota do Cangaço até a margem sergipana, onde uma trilha de cerca de 680 metros leva à Grota do Angico.</p>
+                <div class="pz-chips"><span class="pz-tg"><svg class="ic" aria-hidden="true"><use href="#i-boat"/></svg>Barco 30 a 40 min</span><span class="pz-tg"><svg class="ic" aria-hidden="true"><use href="#i-route"/></svg>Trilha ≈ 680 m</span></div>
+                <a class="pz-btn" href="https://www.google.com/maps/search/?api=1&query=Centro%20Hist%C3%B3rico%20de%20Piranhas%2C%20Alagoas" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg>Ver Piranhas no mapa</a></li>
+            </ol>
+            <div class="pz-story">
+              <span class="pz-sico"><svg class="ic" aria-hidden="true"><use href="#i-hat"/></svg></span>
+              <div>
+                <h4>A emboscada de 28 de julho de 1938</h4>
+                <p>Na madrugada daquele dia, a Grota do Angico, em Poço Redondo (SE), foi palco do ataque da polícia volante de Alagoas, comandada pelo tenente João Bezerra, ao esconderijo do bando de Lampião. Morreram ali Lampião, Maria Bonita e nove cangaceiros, em um episódio considerado o marco final do cangaço.</p>
+                <p>Hoje o local faz parte do Monumento Natural Grota do Angico, e a visita é acompanhada por guias que contam essa história.</p>
+                <small>Mais de uma versão circula sobre como a polícia chegou até o esconderijo. Os guias costumam apresentar os detalhes.</small>
+              </div>
+            </div>
+            <p class="pz-cgtips"><svg class="ic" aria-hidden="true"><use href="#i-bulb"/></svg><span><strong>Para planejar:</strong> saia cedo, leve água, protetor solar e roupas leves (faz muito calor no sertão) e tênis para a trilha. Há agências que fazem o bate-volta saindo de Aracaju. Para juntar tudo com calma, muita gente dorme em Piranhas ou em Canindé de São Francisco.</span></p>
+            <div class="pz-cgfoot">
+              <a class="pz-btn solid" href="https://www.google.com/maps/dir/?api=1&origin=Condom%C3%ADnio%20Viva%20Vida%2C%20Avenida%20In%C3%A1cio%20Barbosa%2011650%2C%20Aracaju%20-%20SE&destination=Canind%C3%A9%20de%20S%C3%A3o%20Francisco%20-%20SE&travelmode=driving" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-route"/></svg>Como chegar a Xingó a partir da casa</a>
+              <a class="pz-btn" href="https://www.google.com/maps/search/?api=1&query=Monumento%20Natural%20Grota%20do%20Angico%2C%20Po%C3%A7o%20Redondo%20-%20SE" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg>Grota do Angico no mapa</a>
+              <a class="pz-btn" href="https://www.google.com/search?q=passeio+Xing%C3%B3+Piranhas+Rota+do+Canga%C3%A7o+saindo+de+Aracaju" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-compass"/></svg>Buscar passeios</a>
+            </div>
+          </div></div>
+        <p class="pz-note"><svg class="ic" aria-hidden="true"><use href="#i-info"/></svg><span>Os passeios são operados por empresas e guias locais, sem vínculo com o Recanto do Sossego. Valores, horários, regras e disponibilidade mudam, e muitos pedem reserva antecipada: confirme sempre com a operadora. Os botões de rota abrem o Google Maps a partir da casa.</span></p>
+        <div class="pz-help"><div><b>Quer ajuda para escolher?</b><span>Conte para o anfitrião o que vocês gostam e ele indica o melhor passeio.</span></div>
+          <a class="btn btn-wa" href="https://wa.me/5534999792398?text=Ol%C3%A1%21%20Gostaria%20de%20dicas%20para%20os%20passeios%20da%20regi%C3%A3o%20%28Croa%20do%20Gor%C3%A9%2C%20Praia%20do%20Saco%2C%20Xing%C3%B3...%29%20durante%20a%20minha%20estadia%20no%20Recanto%20do%20Sossego." target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-chat"/></svg>Falar com o anfitrião</a></div>
+      </section>
       <!-- SUA OPINIÃO -->
       <section id="voltar" class="reveal">
         <div class="feedback">
